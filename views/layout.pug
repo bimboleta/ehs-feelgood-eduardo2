@@ -1,0 +1,49 @@
+doctype 5
+html
+  head
+    - if (typeof(title) == 'undefined')
+        title Express Starter Template
+    - else 
+        title= title
+    
+
+    script(src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js")
+    // include default stylesheets and any view stylesheets
+    link(rel='stylesheet', href='/stylesheets/tether.min.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css', integrity='sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ', crossorigin='anonymous')
+    script(src='/javascripts/tether.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js', integrity='sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn', crossorigin='anonymous')
+
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    
+    // include default scripts and any view scripts
+    script(src='/javascripts/modernizr.js')
+    
+    block head
+    
+  body   
+    header
+      div(class='content-wrapper')
+        div(class="float-left")
+          p(class="site-title")
+            a(href="/") FeelGood
+        div(class="float-right")
+          nav
+            ul#menu
+              li 
+                a(href="/") Home
+              li 
+                a(href="/chat") Chat
+              li
+                a(href="/about") About
+              if user
+                li
+                  a(href="/logout") Sair
+    #body
+        block content
+      
+    footer
+      div(class="content-wrapper")
+        div(class="float-left")
+          p &copy; !{new Date().getFullYear()} FeelGood
+      div(style="clear: both")
