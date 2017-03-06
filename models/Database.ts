@@ -44,6 +44,10 @@ Integrador.hasMany(ContratoServicoEspecifico);
 ServicoEspecifico.belongsTo(Fornecedor);
 Fornecedor.hasMany(ServicoEspecifico);
 
-sequelize.sync({force: true}).then(() => {
-    Service.create({name: "Construir parede", description: "Parede legal"});
+sequelize.sync({force: true}).then(async () => {
+    let integrador = await Integrador.create({cnpj: "02.032.012/060-12"});
+    let parede = await Service.create({name: "Construir parede", description: "Parede legal", IntegradorId: integrador.id, disponivel: true});
+    let fornecedor = await Fornecedor.create({cnpj: "02.032.012/060-13"});
+    let furarParede = await ServicoEspecifico.create({name: "Furar parede", description: "Faço todos os furos", FornecedorId: fornecedor.id, disponivel: true});
+    let pintarParede = await ServicoEspecifico.create({name: "Pintar parede", description: "Pintar paredes de quaisquer cores", FornecedorId: fornecedor.id, disponivel: true});
 });

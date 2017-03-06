@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    section(class="featured")
+      div(class="content-wrapper")
+          hgroup(class="title")
+              h1 Painel do Integrador
+
+    section(class="main-content")
+      h3 Manipule seus serviços
+      form(action="/" method="POST")
+        .form-group(style="margin-right: 10")
+            input.form-control(type='text', name='serviceName')
+        button.btn.btn-primary(type="submit") serviços
+      if services
+        each service in services
+            p=service

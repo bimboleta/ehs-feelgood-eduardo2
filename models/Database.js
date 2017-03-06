@@ -1,4 +1,12 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 const Sequelize = require("sequelize");
 const Service_1 = require("./Service");
 const Contrato_1 = require("./Contrato");
@@ -38,6 +46,10 @@ exports.ServicoEspecifico.hasMany(exports.ContratoServicoEspecifico);
 exports.Integrador.hasMany(exports.ContratoServicoEspecifico);
 exports.ServicoEspecifico.belongsTo(exports.Fornecedor);
 exports.Fornecedor.hasMany(exports.ServicoEspecifico);
-sequelize.sync({ force: true }).then(() => {
-    exports.Service.create({ name: "Construir parede", description: "Parede legal" });
-});
+sequelize.sync({ force: true }).then(() => __awaiter(this, void 0, void 0, function* () {
+    let integrador = yield exports.Integrador.create({ cnpj: "02.032.012/060-12" });
+    let parede = yield exports.Service.create({ name: "Construir parede", description: "Parede legal", IntegradorId: integrador.id, disponivel: true });
+    let fornecedor = yield exports.Fornecedor.create({ cnpj: "02.032.012/060-13" });
+    let furarParede = yield exports.ServicoEspecifico.create({ name: "Furar parede", description: "Faço todos os furos", FornecedorId: fornecedor.id, disponivel: true });
+    let pintarParede = yield exports.ServicoEspecifico.create({ name: "Pintar parede", description: "Pintar paredes de quaisquer cores", FornecedorId: fornecedor.id, disponivel: true });
+}));

@@ -9,7 +9,7 @@ interface ICliente extends Sequelize.Instance<IClienteAttributes>, IClienteAttri
 export const ClienteModelGenerator = (sequelize: Sequelize.Sequelize): Sequelize.Model<ICliente, IClienteAttributes> => {
 
     return sequelize.define<ICliente, IClienteAttributes>("Cliente", {
-        cpf: Sequelize.STRING
+        cpf: {type: Sequelize.STRING, unique: true}
     });
 }
 

@@ -2,7 +2,8 @@ import * as Sequelize from "sequelize";
 
 interface IServicoEspecificoAttributes{
     name?: string,
-    description?: string
+    description?: string,
+    disponivel?: boolean
 }
 interface IServicoEspecifico extends Sequelize.Instance<IServicoEspecificoAttributes>, IServicoEspecificoAttributes{
 }
@@ -11,7 +12,8 @@ export const ServicoEspecificoModelGenerator = (sequelize: Sequelize.Sequelize):
 
     return sequelize.define<IServicoEspecifico, IServicoEspecificoAttributes>("ServicoEspecifico", {
         name: Sequelize.STRING,
-        description: Sequelize.TEXT
+        description: Sequelize.TEXT,
+        disponivel: Sequelize.BOOLEAN 
     });
 }
 

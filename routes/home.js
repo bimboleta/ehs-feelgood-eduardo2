@@ -20,22 +20,40 @@ module.exports = function (app) {
             }, Keys_1.SecretKey));
             res.redirect("/");
         }));
-        app.get("/loginPrestador", (req, res) => __awaiter(this, void 0, void 0, function* () {
+        app.get("/loginIntegrador", (req, res) => __awaiter(this, void 0, void 0, function* () {
             res.cookie("authorization", jwt.sign({
-                type: "Prestador",
+                type: "Integrador",
                 cnpj: "02.032.012/060-12"
             }, Keys_1.SecretKey));
             res.redirect("/");
         }));
+        app.get("/loginFornecedor", (req, res) => __awaiter(this, void 0, void 0, function* () {
+            res.cookie("authorization", jwt.sign({
+                type: "Fornecedor",
+                cnpj: "02.032.012/060-13"
+            }, Keys_1.SecretKey));
+            res.redirect("/");
+        }));
+        // logout
         app.get("/logout", (req, res) => __awaiter(this, void 0, void 0, function* () {
             res.cookie("authorization", null);
             res.redirect("/");
         }));
         // home page
         app.get('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
-            console.log(req["user"]);
+            if (req["user"]) {
+                if (req["user"].type === "Fornecedor") {
+                    res.redirect("/fornecedor");
+                    return;
+                }
+                else if (req["user"].type === "Integrador") {
+                    res.redirect("/integrador");
+                    return;
+                }
+            }
             res.render('index', { title: 'Home', user: req["user"] });
         }));
+        // Selecionar serviço
         app.post("/", (req, res) => __awaiter(this, void 0, void 0, function* () {
             let query = req["body"];
             let services = yield Database_1.Service.findAll({
@@ -46,6 +64,15 @@ module.exports = function (app) {
                 }
             });
             res.render("index", { title: "Home", services: services.map(s => s.name), user: req["user"] });
+        }));
+        // Integrador dash
+        app.get("/integrador", (req, res) => __awaiter(this, void 0, void 0, function* () {
+            if (req["user"] && req["user"].type === "Integrador") {
+                let integrador = yield Database_1.Integrador.find({ where: { cnpj: req["user"].cnpj }, include: [Database_1.Service] });
+                res.render("integrador", { title: "Integrador", user: req["user"], services: integrador.Services.map(s => s.name) });
+                return;
+            }
+            res.redirect("/");
         }));
     });
 };
