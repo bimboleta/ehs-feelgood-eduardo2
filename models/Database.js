@@ -46,7 +46,7 @@ exports.ServicoEspecifico.hasMany(exports.ContratoServicoEspecifico);
 exports.Integrador.hasMany(exports.ContratoServicoEspecifico);
 exports.ServicoEspecifico.belongsTo(exports.Fornecedor);
 exports.Fornecedor.hasMany(exports.ServicoEspecifico);
-sequelize.sync({ force: true }).then(() => __awaiter(this, void 0, void 0, function* () {
+sequelize.sync({ force: false }).then(() => __awaiter(this, void 0, void 0, function* () {
     let cliente = yield exports.Cliente.create({ cpf: "391.854.828-70" });
     let integrador = yield exports.Integrador.create({ cnpj: "02.032.012/060-12" });
     let parede = yield exports.Service.create({ name: "Construir parede", description: "Parede legal", IntegradorId: integrador.id, disponivel: true });

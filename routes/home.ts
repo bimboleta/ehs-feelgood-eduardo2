@@ -156,7 +156,15 @@ export = async function (app: express.Application) {
     app.get("/cliente/contrato/:id", async (req: express.Request, res: express.Response) => {
         let cliente = await Cliente.find({where: {cpf: req["user"].cpf}});
         let contrato = await Contrato.find({where: {ClienteId: cliente.id, id: req.params["id"]}, include: [Service]});
-        res.render("cliente/contrato", {contrato})
+        contrato.cronograma = JSON.parse(contrato.cronograma) || [];
+        contrato.cronograma = contrato.cronograma.map(estado => {
+            return {
+                estado: estado
+            }
+        })
+        contrato.estado = contrato.estado || "";
+        contrato.gastos = JSON.parse(contrato.gastos) || [];
+        res.render("cliente/contrato", {contrato, title: "Contrato"})
     });
 
     app.get("/integrador/contrato/:id", async (req: express.Request, res: express.Response) => {
@@ -171,7 +179,7 @@ export = async function (app: express.Application) {
             }
         })
         contrato.estado = contrato.estado || "";
-        contrato.gastos = JSON.parse(contrato.gastos) || [{name: "Tijolos", value: "R$: 50,00"}];
+        contrato.gastos = JSON.parse(contrato.gastos) || [];
         contrato.gastos = contrato.gastos.map(gasto => {
             gasto.deleteUrl = `/integrador/contrato/${contrato.id}/deletar-gasto/${gasto.name}`
             return gasto;
@@ -251,5 +259,4 @@ export = async function (app: express.Application) {
         }
     });
 
-    // Contrato.findById(1).then(contrato => console.log(contrato));
 }

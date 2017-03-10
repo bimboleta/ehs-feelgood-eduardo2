@@ -8,4 +8,33 @@ block content
 
     section(class="main-content")
         h3=contrato.Service.description
-        p=JSON.stringify(contrato)
+        .card(style="margin-top: 1rem")
+            .card-header 
+                h3 Cronograma
+            .card-body
+                ul.list-group.list-group-flush
+                    each entrada in contrato.cronograma
+                        if entrada.estado === contrato.estado
+                            li.list-group-item.list-group-item-info
+                                div(style="width: 100%")
+                                    p=entrada.estado
+                                    .float-right
+                        else
+                            li.list-group-item
+                                div(style="width: 100%")
+                                    p=entrada.estado
+
+        .card(style="margin-top: 1rem")
+            .card-header 
+                h3 Gastos
+            .card-body
+                table.table.table-striped
+                    thead
+                        tr
+                            th Nome
+                            th Valor
+                    tbody
+                        each gasto in contrato.gastos
+                                tr
+                                    td=gasto.name
+                                    td=gasto.value

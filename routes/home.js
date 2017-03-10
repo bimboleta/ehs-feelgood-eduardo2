@@ -146,7 +146,15 @@ module.exports = function (app) {
         app.get("/cliente/contrato/:id", (req, res) => __awaiter(this, void 0, void 0, function* () {
             let cliente = yield Database_1.Cliente.find({ where: { cpf: req["user"].cpf } });
             let contrato = yield Database_1.Contrato.find({ where: { ClienteId: cliente.id, id: req.params["id"] }, include: [Database_1.Service] });
-            res.render("cliente/contrato", { contrato });
+            contrato.cronograma = JSON.parse(contrato.cronograma) || [];
+            contrato.cronograma = contrato.cronograma.map(estado => {
+                return {
+                    estado: estado
+                };
+            });
+            contrato.estado = contrato.estado || "";
+            contrato.gastos = JSON.parse(contrato.gastos) || [];
+            res.render("cliente/contrato", { contrato, title: "Contrato" });
         }));
         app.get("/integrador/contrato/:id", (req, res) => __awaiter(this, void 0, void 0, function* () {
             let integrador = yield Database_1.Integrador.find({ where: { cnpj: req["user"].cnpj } });
@@ -160,7 +168,7 @@ module.exports = function (app) {
                 };
             });
             contrato.estado = contrato.estado || "";
-            contrato.gastos = JSON.parse(contrato.gastos) || [{ name: "Tijolos", value: "R$: 50,00" }];
+            contrato.gastos = JSON.parse(contrato.gastos) || [];
             contrato.gastos = contrato.gastos.map(gasto => {
                 gasto.deleteUrl = `/integrador/contrato/${contrato.id}/deletar-gasto/${gasto.name}`;
                 return gasto;
@@ -240,6 +248,5 @@ module.exports = function (app) {
                 res.sendStatus(401);
             }
         }));
-        // Contrato.findById(1).then(contrato => console.log(contrato));
     });
 };
