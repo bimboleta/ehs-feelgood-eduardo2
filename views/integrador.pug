@@ -15,7 +15,7 @@ block content
       .tab-content
         #search.tab-pane.fade.show.active(role='tabpanel' style="margin-top: 1rem")
             h3 Adicione um servico
-                form(action="/integrador/adicionar-servico" method="POST" style="margin-top: 1rem")
+                form(action=addRoute method="POST" style="margin-top: 1rem")
                     .form-group(style="margin-right: 10")
                         label Nome
                         input.form-control(type='text', name='serviceName')
@@ -43,7 +43,10 @@ block content
                                 h4.card-title Código #{contrato.id}: #{contrato.Service.name}
                                     br
                                     br
-                                    | CPF do Cliente: #{contrato.Cliente.cpf}
+                                    if contrato.Cliente
+                                        | CPF do Cliente: #{contrato.Cliente.cpf}
+                                    else if contrato.Integrador
+                                        | CNPJ do Integrador: #{contrato.Integrador.cnpj}
                                 p.card-text
                                     =contrato.Service.description
                                     |  

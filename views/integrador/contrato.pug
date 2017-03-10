@@ -28,7 +28,7 @@ block content
                                         a.btn.btn-primary(href=entrada.setRoute style="margin-right: 1rem") Estado atual
                                         a.btn.btn-danger(href=entrada.deleteRoute) Remover
                     li.list-group-item
-                        form(action=`/integrador/contrato/${contrato.id}/novo-estado` method="POST" style="width: 100%")
+                        form(action=addStateRoute||`/integrador/contrato/${contrato.id}/novo-estado` method="POST" style="width: 100%")
                             input.form-control(type="text" name="estado")
                             button.btn.btn-primary(style="margin-top: 1rem") Adicionar novo estado
 
@@ -50,7 +50,7 @@ block content
                                     td 
                                         a.btn.btn-danger(href=gasto.deleteUrl) Deletar
                         tr
-                            form(action=`/integrador/contrato/${contrato.id}/criar-gasto` method="POST")
+                            form(action=addSpentRoute||`/integrador/contrato/${contrato.id}/criar-gasto` method="POST")
                                 td
                                     input.form-control(name="name")
                                 td

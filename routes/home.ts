@@ -1,5 +1,5 @@
 import * as express from "express";
-import { Service, Integrador, Contrato, Cliente, Fornecedor } from '../models/Database';
+import { Service, Integrador, Contrato, Cliente, Fornecedor, ContratoServicoEspecifico, ServicoEspecifico } from '../models/Database';
 import * as jwt from "jsonwebtoken";
 import { SecretKey } from '../utils/Keys';
 
@@ -62,7 +62,10 @@ export = async function (app: express.Application) {
                 return;
             }
         }
-        res.render('index', { title: 'Home', user: req["user"], contratos: await getUserContratos(req["user"]) })
+        res.render('index', {
+            title: 'Home', user: req["user"], contratos: await getUserContratos(req["user"]),
+            searchRoute: "/"
+        })
     });
 
 
@@ -87,7 +90,8 @@ export = async function (app: express.Application) {
                     contractRoute: `/cliente/contratar-servico/${s.id}`
                 }
             }), user: req["user"],
-            contratos: await getUserContratos(req["user"])
+            contratos: await getUserContratos(req["user"]),
+            searchRoute: "/"
         })
     });
 
@@ -126,7 +130,8 @@ export = async function (app: express.Application) {
                         description: s.description,
                         deleteRoute: `/integrador/deletar-servico/${s.id}`
                     }
-                }), contratos: contratos
+                }), contratos: contratos, addRoute: "/integrador/adicionar-servico",
+                includeRouteToServicoEspecifico: true
             });
             return;
         }
@@ -154,8 +159,8 @@ export = async function (app: express.Application) {
     });
 
     app.get("/cliente/contrato/:id", async (req: express.Request, res: express.Response) => {
-        let cliente = await Cliente.find({where: {cpf: req["user"].cpf}});
-        let contrato = await Contrato.find({where: {ClienteId: cliente.id, id: req.params["id"]}, include: [Service]});
+        let cliente = await Cliente.find({ where: { cpf: req["user"].cpf } });
+        let contrato = await Contrato.find({ where: { ClienteId: cliente.id, id: req.params["id"] }, include: [Service] });
         contrato.cronograma = JSON.parse(contrato.cronograma) || [];
         contrato.cronograma = contrato.cronograma.map(estado => {
             return {
@@ -164,12 +169,12 @@ export = async function (app: express.Application) {
         })
         contrato.estado = contrato.estado || "";
         contrato.gastos = JSON.parse(contrato.gastos) || [];
-        res.render("cliente/contrato", {contrato, title: "Contrato"})
+        res.render("cliente/contrato", { contrato, title: "Contrato", user: req["user"] })
     });
 
     app.get("/integrador/contrato/:id", async (req: express.Request, res: express.Response) => {
-        let integrador = await Integrador.find({where: {cnpj: req["user"].cnpj}});
-        let contrato = await Contrato.find({where: {id: req.params["id"]}, include: [Service]});
+        let integrador = await Integrador.find({ where: { cnpj: req["user"].cnpj } });
+        let contrato = await Contrato.find({ where: { id: req.params["id"] }, include: [Service] });
         contrato.cronograma = JSON.parse(contrato.cronograma) || [];
         contrato.cronograma = contrato.cronograma.map(estado => {
             return {
@@ -184,79 +189,316 @@ export = async function (app: express.Application) {
             gasto.deleteUrl = `/integrador/contrato/${contrato.id}/deletar-gasto/${gasto.name}`
             return gasto;
         })
-        if(contrato.Service.IntegradorId === integrador.id){
-            res.render("integrador/contrato", {contrato, title: "Contrato"})
-        }else{
+        if (contrato.Service.IntegradorId === integrador.id) {
+            res.render("integrador/contrato", { contrato, title: "Contrato",
+            includeRouteToServicoEspecifico: true, user: req["user"] })
+        } else {
             res.sendStatus(401);
         }
     });
 
     app.post("/integrador/contrato/:id/novo-estado", async (req: express.Request, res: express.Response) => {
-        let integrador = await Integrador.find({where: {cnpj: req["user"].cnpj}});
-        let contrato = await Contrato.find({where: {id: req.params["id"]}, include: [Service]});
-        if(contrato.Service.IntegradorId === integrador.id){
+        let integrador = await Integrador.find({ where: { cnpj: req["user"].cnpj } });
+        let contrato = await Contrato.find({ where: { id: req.params["id"] }, include: [Service] });
+        if (contrato.Service.IntegradorId === integrador.id) {
             contrato.cronograma = JSON.parse(contrato.cronograma) || [];
             contrato.cronograma.push(req["body"]["estado"]);
             contrato.cronograma = JSON.stringify(contrato.cronograma);
             await contrato.save();
             res.redirect("/integrador/contrato/" + req.params["id"]);
-        }else{
+        } else {
             res.sendStatus(401);
         }
     });
 
     app.get("/integrador/contrato/:id/fixar-estado/:estado", async (req: express.Request, res: express.Response) => {
-        let integrador = await Integrador.find({where: {cnpj: req["user"].cnpj}});
-        let contrato = await Contrato.find({where: {id: req.params["id"]}, include: [Service]});
-        if(contrato.Service.IntegradorId === integrador.id){
+        let integrador = await Integrador.find({ where: { cnpj: req["user"].cnpj } });
+        let contrato = await Contrato.find({ where: { id: req.params["id"] }, include: [Service] });
+        if (contrato.Service.IntegradorId === integrador.id) {
             contrato.estado = req.params["estado"];
             await contrato.save();
             res.redirect("/integrador/contrato/" + req.params["id"]);
-        }else{
+        } else {
             res.sendStatus(401);
         }
     });
 
     app.get("/integrador/contrato/:id/deletar-estado/:estado", async (req: express.Request, res: express.Response) => {
-        let integrador = await Integrador.find({where: {cnpj: req["user"].cnpj}});
-        let contrato = await Contrato.find({where: {id: req.params["id"]}, include: [Service]});
-        if(contrato.Service.IntegradorId === integrador.id){
+        let integrador = await Integrador.find({ where: { cnpj: req["user"].cnpj } });
+        let contrato = await Contrato.find({ where: { id: req.params["id"] }, include: [Service] });
+        if (contrato.Service.IntegradorId === integrador.id) {
             contrato.cronograma = JSON.parse(contrato.cronograma) || [];
             contrato.cronograma = contrato.cronograma.filter(c => c !== req.params["estado"]);
             contrato.cronograma = JSON.stringify(contrato.cronograma);
             await contrato.save();
             res.redirect("/integrador/contrato/" + req.params["id"]);
-        }else{
+        } else {
             res.sendStatus(401);
         }
     });
 
     app.post("/integrador/contrato/:id/criar-gasto", async (req: express.Request, res: express.Response) => {
-        let integrador = await Integrador.find({where: {cnpj: req["user"].cnpj}});
-        let contrato = await Contrato.find({where: {id: req.params["id"]}, include: [Service]});
-        if(contrato.Service.IntegradorId === integrador.id){
+        let integrador = await Integrador.find({ where: { cnpj: req["user"].cnpj } });
+        let contrato = await Contrato.find({ where: { id: req.params["id"] }, include: [Service] });
+        if (contrato.Service.IntegradorId === integrador.id) {
             contrato.gastos = JSON.parse(contrato.gastos) || [];
             contrato.gastos.push(req["body"]);
             contrato.gastos = JSON.stringify(contrato.gastos);
             await contrato.save();
             res.redirect("/integrador/contrato/" + req.params["id"]);
-        }else{
+        } else {
             res.sendStatus(401);
         }
     });
 
     app.get("/integrador/contrato/:id/deletar-gasto/:name", async (req: express.Request, res: express.Response) => {
-        let integrador = await Integrador.find({where: {cnpj: req["user"].cnpj}});
-        let contrato = await Contrato.find({where: {id: req.params["id"]}, include: [Service]});
-        if(contrato.Service.IntegradorId === integrador.id){
+        let integrador = await Integrador.find({ where: { cnpj: req["user"].cnpj } });
+        let contrato = await Contrato.find({ where: { id: req.params["id"] }, include: [Service] });
+        if (contrato.Service.IntegradorId === integrador.id) {
             contrato.gastos = JSON.parse(contrato.gastos) || [];
             contrato.gastos = contrato.gastos.filter(gasto => gasto.name !== req.params["name"]);
             contrato.gastos = JSON.stringify(contrato.gastos);
             await contrato.save();
             res.redirect("/integrador/contrato/" + req.params["id"]);
-        }else{
+        } else {
             res.sendStatus(401);
         }
     });
 
+    async function getIntegradorContratoServicoEspecificos(user: IUser): Promise<any[]> {
+        if (user && user.type === "Integrador") {
+            let integrador = await Integrador.find({ where: { cnpj: user.cnpj }, include: [{ model: ContratoServicoEspecifico, include: [ServicoEspecifico] }] });
+            return integrador.ContratoServicoEspecificos.map(c => {
+                c.Service = c.ServicoEspecifico;
+                c.url = `/integrador/contrato-servico-especifico/${c.id}`;
+                return c;
+            });
+        }
+        return [];
+    }
+
+    // home page
+    app.get('/integrador/servicos-especificos', async (req: express.Request, res: express.Response) => {
+        if (req["user"]) {
+            if (req["user"].type === "Fornecedor") {
+                res.redirect("/fornecedor");
+                return;
+            } else if (req["user"].type === "Cliente") {
+                res.redirect("/");
+                return;
+            }
+        }
+        res.render('index', {
+            title: 'Home', user: req["user"], contratos: await getIntegradorContratoServicoEspecificos(req["user"]),
+            searchRoute: "/integrador/servicos-especificos",
+            includeRouteToServicoEspecifico: true
+        })
+    });
+
+
+    // Selecionar serviço
+    app.post("/integrador/servicos-especificos", async (req: express.Request, res: express.Response) => {
+        let query: {
+            serviceName: string
+        } = req["body"];
+        let services = await ServicoEspecifico.findAll({
+            where: {
+                name: {
+                    $like: `%${query.serviceName}%`
+                },
+                disponivel: true
+            }
+        });
+        res.render("index", {
+            title: "Home", services: services.map(s => {
+                return {
+                    name: s.name,
+                    description: s.description,
+                    contractRoute: `/integrador/contratar-servico-especifico/${s.id}`
+                }
+            }), user: req["user"],
+            contratos: await getUserContratos(req["user"]),
+            searchRoute: "/integrador/servicos-especificos",
+            includeRouteToServicoEspecifico: true
+        })
+    });
+
+    app.get("/integrador/contratar-servico-especifico/:id", async (req: express.Request, res: express.Response) => {
+        let user: IUser = req["user"];
+        let servico = await ServicoEspecifico.findById(req.params["id"]);
+        if (user.type === "Integrador" && servico) {
+            let integrador = await Integrador.find({ where: { cnpj: user.cnpj } });
+            let contrato = await ContratoServicoEspecifico.create({
+                ServicoEspecificoId: req.params["id"],
+                IntegradorId: integrador.id
+            });
+            res.redirect("/integrador/servicos-especificos");
+        } else {
+            res.sendStatus(403);
+        }
+    });
+
+    // Integrador dash
+    app.get("/fornecedor", async (req: express.Request, res: express.Response) => {
+        if (req["user"] && req["user"].type === "Fornecedor") {
+            let fornecedor = await Fornecedor.find({
+                where: { cnpj: req["user"].cnpj },
+                include: [{ model: ServicoEspecifico, include: [{ model: ContratoServicoEspecifico, include: [ServicoEspecifico, Integrador] }] }]
+            });
+
+            // AQUI
+            let contratos = [];
+            fornecedor.ServicoEspecificos.forEach(s => s.ContratoServicoEspecificos.forEach(c => {
+                c.url = "/fornecedor/contrato-servico-especifico/" + c.id;
+                c.Service = c.ServicoEspecifico;
+                contratos.push(c);
+            }));
+            fornecedor.ServicoEspecificos = fornecedor.ServicoEspecificos.filter(s => s.disponivel);
+            res.render("integrador", {
+                title: "Fornecedor", user: req["user"], services: fornecedor.ServicoEspecificos.map(s => {
+                    return {
+                        name: s.name,
+                        description: s.description,
+                        deleteRoute: `/fornecedor/deletar-servico-especifico/${s.id}`
+                    }
+                }), contratos: contratos, addRoute: "/fornecedor/adicionar-servico-especifico"
+            });
+            return;
+        }
+        res.redirect("/");
+    });
+
+    app.get("/fornecedor/deletar-servico-especifico/:id", async (req: express.Request, res: express.Response) => {
+        let fornecedor = await Fornecedor.find({ where: { cnpj: req["user"].cnpj } });
+        let service = await ServicoEspecifico.findById(req.params["id"]);
+        if (service.FornecedorId === fornecedor.id) {
+            service.disponivel = false;
+            await service.save();
+        }
+        res.redirect("/fornecedor");
+    });
+
+    app.post("/fornecedor/adicionar-servico-especifico", async (req: express.Request, res: express.Response) => {
+        let formData: {
+            serviceName: string
+            serviceDescription: string
+        } = req["body"];
+        let fornecedor = await Fornecedor.find({ where: { cnpj: req["user"].cnpj } });
+        await ServicoEspecifico.create({ name: formData.serviceName, description: formData.serviceDescription, FornecedorId: fornecedor.id });
+        res.redirect("/fornecedor");
+    });
+
+    app.get("/integrador/contrato-servico-especifico/:id", async (req: express.Request, res: express.Response) => {
+        let integrador = await Integrador.find({ where: { cnpj: req["user"].cnpj } });
+        let contratoServicoEspecifico = await ContratoServicoEspecifico.find({ where: { IntegradorId: integrador.id, id: req.params["id"] }, include: [ServicoEspecifico] });
+        contratoServicoEspecifico.cronograma = JSON.parse(contratoServicoEspecifico.cronograma) || [];
+        contratoServicoEspecifico.cronograma = contratoServicoEspecifico.cronograma.map(estado => {
+            return {
+                estado: estado
+            }
+        })
+        contratoServicoEspecifico.estado = contratoServicoEspecifico.estado || "";
+        contratoServicoEspecifico.gastos = JSON.parse(contratoServicoEspecifico.gastos) || [];
+        contratoServicoEspecifico.Service = contratoServicoEspecifico.ServicoEspecifico;
+        res.render("cliente/contrato", { contrato: contratoServicoEspecifico, title: "Contrato",
+            includeRouteToServicoEspecifico: true, user: req["user"] })
+    });
+
+    app.get("/fornecedor/contrato-servico-especifico/:id", async (req: express.Request, res: express.Response) => {
+        let fornecedor = await Fornecedor.find({ where: { cnpj: req["user"].cnpj } });
+        let contratoServicoEspecifico = await ContratoServicoEspecifico.find({ where: { id: req.params["id"] }, include: [ServicoEspecifico] });
+        contratoServicoEspecifico.cronograma = JSON.parse(contratoServicoEspecifico.cronograma) || [];
+        contratoServicoEspecifico.cronograma = contratoServicoEspecifico.cronograma.map(estado => {
+            return {
+                estado: estado,
+                setRoute: `/fornecedor/contrato-servico-especifico/${contratoServicoEspecifico.id}/fixar-estado/${estado}`,
+                deleteRoute: `/fornecedor/contrato-servico-especifico/${contratoServicoEspecifico.id}/deletar-estado/${estado}`
+            }
+        })
+        contratoServicoEspecifico.estado = contratoServicoEspecifico.estado || "";
+        contratoServicoEspecifico.gastos = JSON.parse(contratoServicoEspecifico.gastos) || [];
+        contratoServicoEspecifico.gastos = contratoServicoEspecifico.gastos.map(gasto => {
+            gasto.deleteUrl = `/fornecedor/contrato-servico-especifico/${contratoServicoEspecifico.id}/deletar-gasto/${gasto.name}`
+            return gasto;
+        })
+        contratoServicoEspecifico.Service = contratoServicoEspecifico.ServicoEspecifico;
+        if (contratoServicoEspecifico.ServicoEspecifico.FornecedorId === fornecedor.id) {
+            res.render("integrador/contrato", {
+                user: req["user"],
+                contrato: contratoServicoEspecifico, title: "Contrato"
+                , addStateRoute: `/fornecedor/contrato-servico-especifico/${req.params["id"]}/novo-estado`,
+                addSpentRoute: `/fornecedor/contrato-servico-especifico/${req.params["id"]}/criar-gasto`
+            })
+        } else {
+            res.sendStatus(401);
+        }
+    });
+
+    app.post("/fornecedor/contrato-servico-especifico/:id/novo-estado", async (req: express.Request, res: express.Response) => {
+        let fornecedor = await Fornecedor.find({ where: { cnpj: req["user"].cnpj } });
+        let contratoServicoEspecifico = await ContratoServicoEspecifico.find({ where: { id: req.params["id"] }, include: [ServicoEspecifico] });
+        if (contratoServicoEspecifico.ServicoEspecifico.FornecedorId === fornecedor.id) {
+            contratoServicoEspecifico.cronograma = JSON.parse(contratoServicoEspecifico.cronograma) || [];
+            contratoServicoEspecifico.cronograma.push(req["body"]["estado"]);
+            contratoServicoEspecifico.cronograma = JSON.stringify(contratoServicoEspecifico.cronograma);
+            await contratoServicoEspecifico.save();
+            res.redirect("/fornecedor/contrato-servico-especifico/" + req.params["id"]);
+        } else {
+            res.sendStatus(401);
+        }
+    });
+
+    app.get("/fornecedor/contrato-servico-especifico/:id/fixar-estado/:estado", async (req: express.Request, res: express.Response) => {
+        let fornecedor = await Fornecedor.find({ where: { cnpj: req["user"].cnpj } });
+        let contratoServicoEspecifico = await ContratoServicoEspecifico.find({ where: { id: req.params["id"] }, include: [ServicoEspecifico] });
+        if (contratoServicoEspecifico.ServicoEspecifico.FornecedorId === fornecedor.id) {
+            contratoServicoEspecifico.estado = req.params["estado"];
+            await contratoServicoEspecifico.save();
+            res.redirect("/fornecedor/contrato-servico-especifico/" + req.params["id"]);
+        } else {
+            res.sendStatus(401);
+        }
+    });
+
+    app.get("/fornecedor/contrato-servico-especifico/:id/deletar-estado/:estado", async (req: express.Request, res: express.Response) => {
+        let fornecedor = await Fornecedor.find({ where: { cnpj: req["user"].cnpj } });
+        let contratoServicoEspecifico = await ContratoServicoEspecifico.find({ where: { id: req.params["id"] }, include: [ServicoEspecifico] });
+        if (contratoServicoEspecifico.ServicoEspecifico.FornecedorId === fornecedor.id) {
+            contratoServicoEspecifico.cronograma = JSON.parse(contratoServicoEspecifico.cronograma) || [];
+            contratoServicoEspecifico.cronograma = contratoServicoEspecifico.cronograma.filter(c => c !== req.params["estado"]);
+            contratoServicoEspecifico.cronograma = JSON.stringify(contratoServicoEspecifico.cronograma);
+            await contratoServicoEspecifico.save();
+            res.redirect("/fornecedor/contrato-servico-especifico/" + req.params["id"]);
+        } else {
+            res.sendStatus(401);
+        }
+    });
+
+    app.post("/fornecedor/contrato-servico-especifico/:id/criar-gasto", async (req: express.Request, res: express.Response) => {
+        let fornecedor = await Fornecedor.find({ where: { cnpj: req["user"].cnpj } });
+        let contratoServicoEspecifico = await ContratoServicoEspecifico.find({ where: { id: req.params["id"] }, include: [ServicoEspecifico] });
+        if (contratoServicoEspecifico.ServicoEspecifico.FornecedorId === fornecedor.id) {
+            contratoServicoEspecifico.gastos = JSON.parse(contratoServicoEspecifico.gastos) || [];
+            contratoServicoEspecifico.gastos.push(req["body"]);
+            contratoServicoEspecifico.gastos = JSON.stringify(contratoServicoEspecifico.gastos);
+            await contratoServicoEspecifico.save();
+            res.redirect("/fornecedor/contrato-servico-especifico/" + req.params["id"]);
+        } else {
+            res.sendStatus(401);
+        }
+    });
+
+    app.get("/fornecedor/contrato-servico-especifico/:id/deletar-gasto/:name", async (req: express.Request, res: express.Response) => {
+        let fornecedor = await Fornecedor.find({ where: { cnpj: req["user"].cnpj } });
+        let contratoServicoEspecifico = await ContratoServicoEspecifico.find({ where: { id: req.params["id"] }, include: [ServicoEspecifico] });
+        if (contratoServicoEspecifico.ServicoEspecifico.FornecedorId === fornecedor.id) {
+            contratoServicoEspecifico.gastos = JSON.parse(contratoServicoEspecifico.gastos) || [];
+            contratoServicoEspecifico.gastos = contratoServicoEspecifico.gastos.filter(gasto => gasto.name !== req.params["name"]);
+            contratoServicoEspecifico.gastos = JSON.stringify(contratoServicoEspecifico.gastos);
+            await contratoServicoEspecifico.save();
+            res.redirect("/fornecedor/contrato-servico-especifico/" + req.params["id"]);
+        } else {
+            res.sendStatus(401);
+        }
+    });
 }

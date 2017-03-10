@@ -63,7 +63,10 @@ module.exports = function (app) {
                     return;
                 }
             }
-            res.render('index', { title: 'Home', user: req["user"], contratos: yield getUserContratos(req["user"]) });
+            res.render('index', {
+                title: 'Home', user: req["user"], contratos: yield getUserContratos(req["user"]),
+                searchRoute: "/"
+            });
         }));
         // Selecionar serviço
         app.post("/", (req, res) => __awaiter(this, void 0, void 0, function* () {
@@ -84,7 +87,8 @@ module.exports = function (app) {
                         contractRoute: `/cliente/contratar-servico/${s.id}`
                     };
                 }), user: req["user"],
-                contratos: yield getUserContratos(req["user"])
+                contratos: yield getUserContratos(req["user"]),
+                searchRoute: "/"
             });
         }));
         app.get("/cliente/contratar-servico/:id", (req, res) => __awaiter(this, void 0, void 0, function* () {
@@ -122,7 +126,8 @@ module.exports = function (app) {
                             description: s.description,
                             deleteRoute: `/integrador/deletar-servico/${s.id}`
                         };
-                    }), contratos: contratos
+                    }), contratos: contratos, addRoute: "/integrador/adicionar-servico",
+                    includeRouteToServicoEspecifico: true
                 });
                 return;
             }
@@ -154,7 +159,7 @@ module.exports = function (app) {
             });
             contrato.estado = contrato.estado || "";
             contrato.gastos = JSON.parse(contrato.gastos) || [];
-            res.render("cliente/contrato", { contrato, title: "Contrato" });
+            res.render("cliente/contrato", { contrato, title: "Contrato", user: req["user"] });
         }));
         app.get("/integrador/contrato/:id", (req, res) => __awaiter(this, void 0, void 0, function* () {
             let integrador = yield Database_1.Integrador.find({ where: { cnpj: req["user"].cnpj } });
@@ -174,7 +179,8 @@ module.exports = function (app) {
                 return gasto;
             });
             if (contrato.Service.IntegradorId === integrador.id) {
-                res.render("integrador/contrato", { contrato, title: "Contrato" });
+                res.render("integrador/contrato", { contrato, title: "Contrato",
+                    includeRouteToServicoEspecifico: true, user: req["user"] });
             }
             else {
                 res.sendStatus(401);
@@ -243,6 +249,232 @@ module.exports = function (app) {
                 contrato.gastos = JSON.stringify(contrato.gastos);
                 yield contrato.save();
                 res.redirect("/integrador/contrato/" + req.params["id"]);
+            }
+            else {
+                res.sendStatus(401);
+            }
+        }));
+        function getIntegradorContratoServicoEspecificos(user) {
+            return __awaiter(this, void 0, void 0, function* () {
+                if (user && user.type === "Integrador") {
+                    let integrador = yield Database_1.Integrador.find({ where: { cnpj: user.cnpj }, include: [{ model: Database_1.ContratoServicoEspecifico, include: [Database_1.ServicoEspecifico] }] });
+                    return integrador.ContratoServicoEspecificos.map(c => {
+                        c.Service = c.ServicoEspecifico;
+                        c.url = `/integrador/contrato-servico-especifico/${c.id}`;
+                        return c;
+                    });
+                }
+                return [];
+            });
+        }
+        // home page
+        app.get('/integrador/servicos-especificos', (req, res) => __awaiter(this, void 0, void 0, function* () {
+            if (req["user"]) {
+                if (req["user"].type === "Fornecedor") {
+                    res.redirect("/fornecedor");
+                    return;
+                }
+                else if (req["user"].type === "Cliente") {
+                    res.redirect("/");
+                    return;
+                }
+            }
+            res.render('index', {
+                title: 'Home', user: req["user"], contratos: yield getIntegradorContratoServicoEspecificos(req["user"]),
+                searchRoute: "/integrador/servicos-especificos",
+                includeRouteToServicoEspecifico: true
+            });
+        }));
+        // Selecionar serviço
+        app.post("/integrador/servicos-especificos", (req, res) => __awaiter(this, void 0, void 0, function* () {
+            let query = req["body"];
+            let services = yield Database_1.ServicoEspecifico.findAll({
+                where: {
+                    name: {
+                        $like: `%${query.serviceName}%`
+                    },
+                    disponivel: true
+                }
+            });
+            res.render("index", {
+                title: "Home", services: services.map(s => {
+                    return {
+                        name: s.name,
+                        description: s.description,
+                        contractRoute: `/integrador/contratar-servico-especifico/${s.id}`
+                    };
+                }), user: req["user"],
+                contratos: yield getUserContratos(req["user"]),
+                searchRoute: "/integrador/servicos-especificos",
+                includeRouteToServicoEspecifico: true
+            });
+        }));
+        app.get("/integrador/contratar-servico-especifico/:id", (req, res) => __awaiter(this, void 0, void 0, function* () {
+            let user = req["user"];
+            let servico = yield Database_1.ServicoEspecifico.findById(req.params["id"]);
+            if (user.type === "Integrador" && servico) {
+                let integrador = yield Database_1.Integrador.find({ where: { cnpj: user.cnpj } });
+                let contrato = yield Database_1.ContratoServicoEspecifico.create({
+                    ServicoEspecificoId: req.params["id"],
+                    IntegradorId: integrador.id
+                });
+                res.redirect("/integrador/servicos-especificos");
+            }
+            else {
+                res.sendStatus(403);
+            }
+        }));
+        // Integrador dash
+        app.get("/fornecedor", (req, res) => __awaiter(this, void 0, void 0, function* () {
+            if (req["user"] && req["user"].type === "Fornecedor") {
+                let fornecedor = yield Database_1.Fornecedor.find({
+                    where: { cnpj: req["user"].cnpj },
+                    include: [{ model: Database_1.ServicoEspecifico, include: [{ model: Database_1.ContratoServicoEspecifico, include: [Database_1.ServicoEspecifico, Database_1.Integrador] }] }]
+                });
+                // AQUI
+                let contratos = [];
+                fornecedor.ServicoEspecificos.forEach(s => s.ContratoServicoEspecificos.forEach(c => {
+                    c.url = "/fornecedor/contrato-servico-especifico/" + c.id;
+                    c.Service = c.ServicoEspecifico;
+                    contratos.push(c);
+                }));
+                fornecedor.ServicoEspecificos = fornecedor.ServicoEspecificos.filter(s => s.disponivel);
+                res.render("integrador", {
+                    title: "Fornecedor", user: req["user"], services: fornecedor.ServicoEspecificos.map(s => {
+                        return {
+                            name: s.name,
+                            description: s.description,
+                            deleteRoute: `/fornecedor/deletar-servico-especifico/${s.id}`
+                        };
+                    }), contratos: contratos, addRoute: "/fornecedor/adicionar-servico-especifico"
+                });
+                return;
+            }
+            res.redirect("/");
+        }));
+        app.get("/fornecedor/deletar-servico-especifico/:id", (req, res) => __awaiter(this, void 0, void 0, function* () {
+            let fornecedor = yield Database_1.Fornecedor.find({ where: { cnpj: req["user"].cnpj } });
+            let service = yield Database_1.ServicoEspecifico.findById(req.params["id"]);
+            if (service.FornecedorId === fornecedor.id) {
+                service.disponivel = false;
+                yield service.save();
+            }
+            res.redirect("/fornecedor");
+        }));
+        app.post("/fornecedor/adicionar-servico-especifico", (req, res) => __awaiter(this, void 0, void 0, function* () {
+            let formData = req["body"];
+            let fornecedor = yield Database_1.Fornecedor.find({ where: { cnpj: req["user"].cnpj } });
+            yield Database_1.ServicoEspecifico.create({ name: formData.serviceName, description: formData.serviceDescription, FornecedorId: fornecedor.id });
+            res.redirect("/fornecedor");
+        }));
+        app.get("/integrador/contrato-servico-especifico/:id", (req, res) => __awaiter(this, void 0, void 0, function* () {
+            let integrador = yield Database_1.Integrador.find({ where: { cnpj: req["user"].cnpj } });
+            let contratoServicoEspecifico = yield Database_1.ContratoServicoEspecifico.find({ where: { IntegradorId: integrador.id, id: req.params["id"] }, include: [Database_1.ServicoEspecifico] });
+            contratoServicoEspecifico.cronograma = JSON.parse(contratoServicoEspecifico.cronograma) || [];
+            contratoServicoEspecifico.cronograma = contratoServicoEspecifico.cronograma.map(estado => {
+                return {
+                    estado: estado
+                };
+            });
+            contratoServicoEspecifico.estado = contratoServicoEspecifico.estado || "";
+            contratoServicoEspecifico.gastos = JSON.parse(contratoServicoEspecifico.gastos) || [];
+            contratoServicoEspecifico.Service = contratoServicoEspecifico.ServicoEspecifico;
+            res.render("cliente/contrato", { contrato: contratoServicoEspecifico, title: "Contrato",
+                includeRouteToServicoEspecifico: true, user: req["user"] });
+        }));
+        app.get("/fornecedor/contrato-servico-especifico/:id", (req, res) => __awaiter(this, void 0, void 0, function* () {
+            let fornecedor = yield Database_1.Fornecedor.find({ where: { cnpj: req["user"].cnpj } });
+            let contratoServicoEspecifico = yield Database_1.ContratoServicoEspecifico.find({ where: { id: req.params["id"] }, include: [Database_1.ServicoEspecifico] });
+            contratoServicoEspecifico.cronograma = JSON.parse(contratoServicoEspecifico.cronograma) || [];
+            contratoServicoEspecifico.cronograma = contratoServicoEspecifico.cronograma.map(estado => {
+                return {
+                    estado: estado,
+                    setRoute: `/fornecedor/contrato-servico-especifico/${contratoServicoEspecifico.id}/fixar-estado/${estado}`,
+                    deleteRoute: `/fornecedor/contrato-servico-especifico/${contratoServicoEspecifico.id}/deletar-estado/${estado}`
+                };
+            });
+            contratoServicoEspecifico.estado = contratoServicoEspecifico.estado || "";
+            contratoServicoEspecifico.gastos = JSON.parse(contratoServicoEspecifico.gastos) || [];
+            contratoServicoEspecifico.gastos = contratoServicoEspecifico.gastos.map(gasto => {
+                gasto.deleteUrl = `/fornecedor/contrato-servico-especifico/${contratoServicoEspecifico.id}/deletar-gasto/${gasto.name}`;
+                return gasto;
+            });
+            contratoServicoEspecifico.Service = contratoServicoEspecifico.ServicoEspecifico;
+            if (contratoServicoEspecifico.ServicoEspecifico.FornecedorId === fornecedor.id) {
+                res.render("integrador/contrato", {
+                    user: req["user"],
+                    contrato: contratoServicoEspecifico, title: "Contrato",
+                    addStateRoute: `/fornecedor/contrato-servico-especifico/${req.params["id"]}/novo-estado`,
+                    addSpentRoute: `/fornecedor/contrato-servico-especifico/${req.params["id"]}/criar-gasto`
+                });
+            }
+            else {
+                res.sendStatus(401);
+            }
+        }));
+        app.post("/fornecedor/contrato-servico-especifico/:id/novo-estado", (req, res) => __awaiter(this, void 0, void 0, function* () {
+            let fornecedor = yield Database_1.Fornecedor.find({ where: { cnpj: req["user"].cnpj } });
+            let contratoServicoEspecifico = yield Database_1.ContratoServicoEspecifico.find({ where: { id: req.params["id"] }, include: [Database_1.ServicoEspecifico] });
+            if (contratoServicoEspecifico.ServicoEspecifico.FornecedorId === fornecedor.id) {
+                contratoServicoEspecifico.cronograma = JSON.parse(contratoServicoEspecifico.cronograma) || [];
+                contratoServicoEspecifico.cronograma.push(req["body"]["estado"]);
+                contratoServicoEspecifico.cronograma = JSON.stringify(contratoServicoEspecifico.cronograma);
+                yield contratoServicoEspecifico.save();
+                res.redirect("/fornecedor/contrato-servico-especifico/" + req.params["id"]);
+            }
+            else {
+                res.sendStatus(401);
+            }
+        }));
+        app.get("/fornecedor/contrato-servico-especifico/:id/fixar-estado/:estado", (req, res) => __awaiter(this, void 0, void 0, function* () {
+            let fornecedor = yield Database_1.Fornecedor.find({ where: { cnpj: req["user"].cnpj } });
+            let contratoServicoEspecifico = yield Database_1.ContratoServicoEspecifico.find({ where: { id: req.params["id"] }, include: [Database_1.ServicoEspecifico] });
+            if (contratoServicoEspecifico.ServicoEspecifico.FornecedorId === fornecedor.id) {
+                contratoServicoEspecifico.estado = req.params["estado"];
+                yield contratoServicoEspecifico.save();
+                res.redirect("/fornecedor/contrato-servico-especifico/" + req.params["id"]);
+            }
+            else {
+                res.sendStatus(401);
+            }
+        }));
+        app.get("/fornecedor/contrato-servico-especifico/:id/deletar-estado/:estado", (req, res) => __awaiter(this, void 0, void 0, function* () {
+            let fornecedor = yield Database_1.Fornecedor.find({ where: { cnpj: req["user"].cnpj } });
+            let contratoServicoEspecifico = yield Database_1.ContratoServicoEspecifico.find({ where: { id: req.params["id"] }, include: [Database_1.ServicoEspecifico] });
+            if (contratoServicoEspecifico.ServicoEspecifico.FornecedorId === fornecedor.id) {
+                contratoServicoEspecifico.cronograma = JSON.parse(contratoServicoEspecifico.cronograma) || [];
+                contratoServicoEspecifico.cronograma = contratoServicoEspecifico.cronograma.filter(c => c !== req.params["estado"]);
+                contratoServicoEspecifico.cronograma = JSON.stringify(contratoServicoEspecifico.cronograma);
+                yield contratoServicoEspecifico.save();
+                res.redirect("/fornecedor/contrato-servico-especifico/" + req.params["id"]);
+            }
+            else {
+                res.sendStatus(401);
+            }
+        }));
+        app.post("/fornecedor/contrato-servico-especifico/:id/criar-gasto", (req, res) => __awaiter(this, void 0, void 0, function* () {
+            let fornecedor = yield Database_1.Fornecedor.find({ where: { cnpj: req["user"].cnpj } });
+            let contratoServicoEspecifico = yield Database_1.ContratoServicoEspecifico.find({ where: { id: req.params["id"] }, include: [Database_1.ServicoEspecifico] });
+            if (contratoServicoEspecifico.ServicoEspecifico.FornecedorId === fornecedor.id) {
+                contratoServicoEspecifico.gastos = JSON.parse(contratoServicoEspecifico.gastos) || [];
+                contratoServicoEspecifico.gastos.push(req["body"]);
+                contratoServicoEspecifico.gastos = JSON.stringify(contratoServicoEspecifico.gastos);
+                yield contratoServicoEspecifico.save();
+                res.redirect("/fornecedor/contrato-servico-especifico/" + req.params["id"]);
+            }
+            else {
+                res.sendStatus(401);
+            }
+        }));
+        app.get("/fornecedor/contrato-servico-especifico/:id/deletar-gasto/:name", (req, res) => __awaiter(this, void 0, void 0, function* () {
+            let fornecedor = yield Database_1.Fornecedor.find({ where: { cnpj: req["user"].cnpj } });
+            let contratoServicoEspecifico = yield Database_1.ContratoServicoEspecifico.find({ where: { id: req.params["id"] }, include: [Database_1.ServicoEspecifico] });
+            if (contratoServicoEspecifico.ServicoEspecifico.FornecedorId === fornecedor.id) {
+                contratoServicoEspecifico.gastos = JSON.parse(contratoServicoEspecifico.gastos) || [];
+                contratoServicoEspecifico.gastos = contratoServicoEspecifico.gastos.filter(gasto => gasto.name !== req.params["name"]);
+                contratoServicoEspecifico.gastos = JSON.stringify(contratoServicoEspecifico.gastos);
+                yield contratoServicoEspecifico.save();
+                res.redirect("/fornecedor/contrato-servico-especifico/" + req.params["id"]);
             }
             else {
                 res.sendStatus(401);

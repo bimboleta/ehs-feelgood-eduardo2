@@ -13,7 +13,7 @@ export const ServicoEspecificoModelGenerator = (sequelize: Sequelize.Sequelize):
     return sequelize.define<IServicoEspecifico, IServicoEspecificoAttributes>("ServicoEspecifico", {
         name: Sequelize.STRING,
         description: Sequelize.TEXT,
-        disponivel: Sequelize.BOOLEAN 
+        disponivel: {type: Sequelize.BOOLEAN, defaultValue: true}
     });
 }
 

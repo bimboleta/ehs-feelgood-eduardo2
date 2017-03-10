@@ -31,6 +31,11 @@ html
         div(class="float-right")
           nav
             ul#menu
+              li
+                a(href="/") Principal
+              if includeRouteToServicoEspecifico
+                li
+                  a(href="/integrador/servicos-especificos") Serviços Específicos
               if user
                 li
                   a(href="/logout") Sair
