@@ -26,7 +26,7 @@ block content
                 if services
                     .row
                         each service in services
-                            .col-sm-6
+                            .col-sm-12.col-md-6
                                 .card(style="margin-top: 1rem; margin-right: 1rem")
                                     .card-block
                                         h4.card-title=service.name
@@ -37,7 +37,7 @@ block content
         #contracts.tab-pane.fade(role='tabpanel' style="margin-top: 1rem")
             .row
                 each contrato in contratos
-                    .col-sm-6
+                    .col-sm-12.col-md-6
                         .card(style="margin-top: 1rem; margin-right: 1rem")
                             .card-block
                                 h4.card-title Código #{contrato.id}: #{contrato.Service.name}
