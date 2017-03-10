@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+    section(class="featured")
+      div(class="content-wrapper")
+          hgroup(class="title")
+              h1 Contrato de #{contrato.Service.name}
+
+    section(class="main-content")
+        h3=contrato.Service.description
+        p=JSON.stringify(contrato)

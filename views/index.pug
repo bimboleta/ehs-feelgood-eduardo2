@@ -8,13 +8,45 @@ block content
               h2 O buscador de serviços que você mais precisa
 
     section(class="main-content")
-      h3 Busque um serviço
-      form(action="/" method="POST")
-        .form-group(style="margin-right: 10")
-            input.form-control(type='text', name='serviceName')
-        button.btn.btn-primary(type="submit") Buscar
-      if services
-        each service in services
-            p=service
+      ul#myTab.nav.nav-tabs(role='tablist')
+        li.nav-item
+            a.nav-link.active(data-toggle='tab', href='#search', role='tab', aria-controls='search') Procurar serviços
+        li.nav-item
+            a.nav-link(data-toggle='tab', href='#contracts', role='tab', aria-controls='contracts') Ver contratos
+      .tab-content
+        #search.tab-pane.fade.show.active(role='tabpanel' style="margin-top: 1rem")
+            h3 Busque um serviço
+                form(action="/" method="POST")
+                    .form-group(style="margin-right: 10")
+                        input.form-control(type='text', name='serviceName')
+                    button.btn.btn-primary(type="submit") Buscar
+                if services
+                    .row
+                        each service in services
+                            .col-sm-6
+                                .card(style="margin-top: 1rem; margin-right: 1rem")
+                                    .card-block
+                                        h4.card-title=service.name
+                                        p.card-text
+                                            =service.description
+                                            |  
+                                        a.btn.btn-primary(href=service.contractRoute) Negociar
+        #contracts.tab-pane.fade(role='tabpanel' style="margin-top: 1rem")
+            .row
+                each contrato in contratos
+                    .col-sm-6
+                        .card(style="margin-top: 1rem; margin-right: 1rem")
+                            .card-block
+                                h4.card-title Código #{contrato.id}: #{contrato.Service.name}
+                                p.card-text
+                                    =contrato.Service.description
+                                    |  
+                                a.btn.btn-primary(href=contrato.url) Cronograma
+
+    script.
+        $(function () {
+        $('#myTab a:first').tab('show')
+        })
+      
 
         

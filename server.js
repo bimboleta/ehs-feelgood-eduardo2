@@ -19,6 +19,12 @@ var express = require('express')
 
 var jwt = require("jsonwebtoken");
 var SecretKey = require("./utils/Keys").SecretKey;
+var Database = require("./models/Database");
+var Service = Database.Service;
+var Integrador = Database.Integrador;
+var Contrato = Database.Contrato;
+var Cliente = Database.Cliente;
+var Fornecedor = Database.Fornecedor;
 
 var app = express();
 app.configure(function () {
@@ -31,17 +37,46 @@ app.configure(function () {
     app.use(express.methodOverride());
     app.use(express.cookieParser());
     app.use(function (req, res, next) {
-        console.log(" oiee");
         let user = null;
         if (req["cookies"].authorization) {
-            try{
+            try {
                 user = jwt.verify(req["cookies"].authorization, SecretKey);
             }
-            catch(e){}
+            catch (e) { }
         }
         req["user"] = user;
         next();
-    })
+    });
+    app.use(function (req, res, next) {
+        if (req["user"]) {
+            let user = req["user"];
+            if (user.type === "Cliente") {
+                Cliente.find({ where: { cpf: user.cpf } }).then(function (cliente) {
+                    if (!cliente) {
+                        Cliente.create({ cpf: user.cpf }).then(function () { next() });
+                    } else {
+                        next();
+                    }
+                });
+            } else if (user.type === "Integrador") {
+                Integrador.find({ where: { cnpj: user.cnpj } }).then(function (integrador) {
+                    if (!integrador)
+                        Integrador.create({ cnpj: user.cnpj }).then(function () { next() });
+                    else
+                        next();
+                });
+            } else if (user.type === "Fornecedor") {
+                Fornecedor.find({ where: { cnpj: user.cnpj } }).then(function (fornecedor) {
+                    if (!fornecedor)
+                        Fornecedor.create({ cnpj: user.cnpj }).then(function () { next() });
+                    else
+                        next();
+                });
+            }
+        } else {
+            next();
+        }
+    });
     app.use(app.router);
     app.use(require('less-middleware')({ src: __dirname + '/public' }));
     app.use(express.static(path.join(__dirname, 'public')));

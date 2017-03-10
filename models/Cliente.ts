@@ -1,6 +1,7 @@
 import * as Sequelize from "sequelize";
 
 interface IClienteAttributes{
+    id?: number
     cpf?: string
 }
 interface ICliente extends Sequelize.Instance<IClienteAttributes>, IClienteAttributes{
