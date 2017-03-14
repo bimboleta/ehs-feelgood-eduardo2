@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    section(class="featured")
+      div(class="content-wrapper")
+          hgroup(class="title")
+              h1 Tarifação
+
+    section(class="main-content")
+        .card(style="margin-top: 1rem")
+            .card-header 
+                h3 Tabela de tarifações
+            .card-body
+                table.table.table-striped
+                    thead
+                        tr
+                            th Identificador
+                            th Tempo de uso
+                            th Valor a ser cobrado
+                    tbody
+                        each tarifacao in tarifacoes
+                                tr
+                                    td=tarifacao.identificador
+                                    td=`${Math.ceil(tarifacao.tempo)} s`
+                                    td=`${Math.ceil(tarifacao.valor)} $`

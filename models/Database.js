@@ -15,7 +15,8 @@ const Integrador_1 = require("./Integrador");
 const ContratoServicoEspecifico_1 = require("./ContratoServicoEspecifico");
 const Fornecedor_1 = require("./Fornecedor");
 const ServicoEspecifico_1 = require("./ServicoEspecifico");
-const sequelize = new Sequelize('e-feelgood', 'kiki', 'bobobobo!1', {
+const Tarifacao_1 = require("./Tarifacao");
+exports.sequelize = new Sequelize('e-feelgood', 'kiki', 'bobobobo!1', {
     host: 'e-feelgood.database.windows.net',
     dialect: 'mssql',
     pool: {
@@ -27,13 +28,14 @@ const sequelize = new Sequelize('e-feelgood', 'kiki', 'bobobobo!1', {
         encrypt: true
     }
 });
-exports.Cliente = Cliente_1.ClienteModelGenerator(sequelize);
-exports.Contrato = Contrato_1.ContratoModelGenerator(sequelize);
-exports.ContratoServicoEspecifico = ContratoServicoEspecifico_1.ContratoServicoEspecificoModelGenerator(sequelize);
-exports.Fornecedor = Fornecedor_1.FornecedorModelGenerator(sequelize);
-exports.Integrador = Integrador_1.IntegradorModelGenerator(sequelize);
-exports.Service = Service_1.ServiceModelGenerator(sequelize);
-exports.ServicoEspecifico = ServicoEspecifico_1.ServicoEspecificoModelGenerator(sequelize);
+exports.Cliente = Cliente_1.ClienteModelGenerator(exports.sequelize);
+exports.Contrato = Contrato_1.ContratoModelGenerator(exports.sequelize);
+exports.ContratoServicoEspecifico = ContratoServicoEspecifico_1.ContratoServicoEspecificoModelGenerator(exports.sequelize);
+exports.Fornecedor = Fornecedor_1.FornecedorModelGenerator(exports.sequelize);
+exports.Integrador = Integrador_1.IntegradorModelGenerator(exports.sequelize);
+exports.Service = Service_1.ServiceModelGenerator(exports.sequelize);
+exports.ServicoEspecifico = ServicoEspecifico_1.ServicoEspecificoModelGenerator(exports.sequelize);
+exports.Tarifacao = Tarifacao_1.TarifacaoModelGenerator(exports.sequelize);
 exports.Contrato.belongsTo(exports.Service);
 exports.Contrato.belongsTo(exports.Cliente);
 exports.Service.hasMany(exports.Contrato);
@@ -46,7 +48,7 @@ exports.ServicoEspecifico.hasMany(exports.ContratoServicoEspecifico);
 exports.Integrador.hasMany(exports.ContratoServicoEspecifico);
 exports.ServicoEspecifico.belongsTo(exports.Fornecedor);
 exports.Fornecedor.hasMany(exports.ServicoEspecifico);
-sequelize.sync({ force: false }).then(() => __awaiter(this, void 0, void 0, function* () {
+exports.sequelize.sync({ force: false }).then(() => __awaiter(this, void 0, void 0, function* () {
     // let cliente = await Cliente.create({cpf: "391.854.828-70"});
     // let integrador = await Integrador.create({cnpj: "02.032.012/060-12"});
     // let parede = await Service.create({name: "Construir parede", description: "Parede legal", IntegradorId: integrador.id, disponivel: true});

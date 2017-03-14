@@ -1,4 +1,4 @@
-    
+
 /**
 * MODULE DEPENDENCIES
 * -------------------------------------------------------------------------------------------------
@@ -25,8 +25,46 @@ var Integrador = Database.Integrador;
 var Contrato = Database.Contrato;
 var Cliente = Database.Cliente;
 var Fornecedor = Database.Fornecedor;
+var Tarifacao = Database.Tarifacao;
+var sequelize = Database.sequelize;
 
 var app = express();
+var makeID = (function () {
+    var index = 0;
+    return function () {
+        return index++;
+    }
+})();
+
+app.use(function (req, res, next) {
+    req.id = makeID()
+    next()
+});
+
+var requestTimer = {};
+var userTax = {};
+setInterval(function () {
+    for (var id in userTax) {
+        Tarifacao.find({ identificador: id }).then(__ => {
+            if (__ !== null) {
+                sequelize.transaction(t => {
+                    return Tarifacao.find({ identificador: id }, { transaction: t }).then(tarifa => {
+                        tarifa.tempo += userTax[id] / 1000;
+                        return tarifa.save({ transaction: t });
+                    });
+                }).then(() => {
+                    userTax[id] = 0;
+                })
+            } else {
+                sequelize.transaction(t => {
+                    return Tarifacao.create({ identificador: id, tempo: userTax[id] / 1000 }, { transaction: t });
+                }).then(() => {
+                    userTax[id] = 0;
+                });
+            }
+        });
+    }
+}, 10000);
 app.configure(function () {
     app.set('port', process.env.PORT || 3000);
     app.set('views', __dirname + '/views');
@@ -47,6 +85,40 @@ app.configure(function () {
         req["user"] = user;
         next();
     });
+    app.use(function (req, res, next) {
+        if (req["user"]) {
+            requestTimer[req.id] = process.hrtime()[0] * 1000 + process.hrtime()[1] / 1000000;
+            let processedTime;
+            setTimeout(() => {
+                // Se passar de 15 segundos e não responder, não cobrar
+                if(processedTime !== undefined && !isNaN(processedTime)){
+                    let user = req["user"];
+                    if (user.type === "Cliente") {
+                        if (userTax[user.cpf] !== undefined)
+                            userTax[user.cpf] += processedTime;
+                        else {
+                            userTax[user.cpf] = processedTime;
+                        }
+                    } else {
+                        if (userTax[user.cnpj] !== undefined)
+                            userTax[user.cnpj] += processedTime;
+                        else
+                            userTax[user.cnpj] = processedTime;
+                    }
+                }
+                delete requestTimer[req.id];
+            }, 15000);
+            req.on("end", function () {
+                if(requestTimer[req.id] !== undefined){
+
+                    processedTime = process.hrtime()[0] * 1000 + process.hrtime()[1] / 1000000 - requestTimer[req.id];
+                }
+            });
+        }
+        next();
+    });
+    app.use(require('less-middleware')({ src: __dirname + '/public' }));
+    app.use(express.static(path.join(__dirname, 'public')));
     app.use(function (req, res, next) {
         if (req["user"]) {
             let user = req["user"];
@@ -78,8 +150,6 @@ app.configure(function () {
         }
     });
     app.use(app.router);
-    app.use(require('less-middleware')({ src: __dirname + '/public' }));
-    app.use(express.static(path.join(__dirname, 'public')));
 });
 
 
@@ -94,7 +164,7 @@ app.configure('development', function () {
 * include a route file for each major area of functionality in the site
 **/
 require('./routes/home')(app);
-
+require('./routes/tarifacao')(app);
 
 var server = http.createServer(app);
 

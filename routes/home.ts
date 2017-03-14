@@ -346,7 +346,6 @@ export = async function (app: express.Application) {
                 include: [{ model: ServicoEspecifico, include: [{ model: ContratoServicoEspecifico, include: [ServicoEspecifico, Integrador] }] }]
             });
 
-            // AQUI
             let contratos = [];
             fornecedor.ServicoEspecificos.forEach(s => s.ContratoServicoEspecificos.forEach(c => {
                 c.url = "/fornecedor/contrato-servico-especifico/" + c.id;

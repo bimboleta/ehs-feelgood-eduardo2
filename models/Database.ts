@@ -6,8 +6,9 @@ import { IntegradorModelGenerator } from './Integrador';
 import { ContratoServicoEspecificoModelGenerator } from './ContratoServicoEspecifico';
 import { FornecedorModelGenerator } from './Fornecedor';
 import { ServicoEspecificoModelGenerator } from './ServicoEspecifico';
+import { TarifacaoModelGenerator } from './Tarifacao';
 
-const sequelize = new Sequelize('e-feelgood', 'kiki', 'bobobobo!1', {
+export const sequelize = new Sequelize('e-feelgood', 'kiki', 'bobobobo!1', {
   host: 'e-feelgood.database.windows.net',
   dialect: 'mssql',
   pool: {
@@ -27,6 +28,7 @@ export const Fornecedor = FornecedorModelGenerator(sequelize);
 export const Integrador = IntegradorModelGenerator(sequelize);
 export const Service = ServiceModelGenerator(sequelize);
 export const ServicoEspecifico = ServicoEspecificoModelGenerator(sequelize);
+export const Tarifacao = TarifacaoModelGenerator(sequelize);
 
 Contrato.belongsTo(Service);
 Contrato.belongsTo(Cliente);

@@ -331,7 +331,6 @@ module.exports = function (app) {
                     where: { cnpj: req["user"].cnpj },
                     include: [{ model: Database_1.ServicoEspecifico, include: [{ model: Database_1.ContratoServicoEspecifico, include: [Database_1.ServicoEspecifico, Database_1.Integrador] }] }]
                 });
-                // AQUI
                 let contratos = [];
                 fornecedor.ServicoEspecificos.forEach(s => s.ContratoServicoEspecificos.forEach(c => {
                     c.url = "/fornecedor/contrato-servico-especifico/" + c.id;
