@@ -12,7 +12,7 @@ block content
         li.nav-item
             a.nav-link.active(data-toggle='tab', href='#search', role='tab', aria-controls='search') Procurar serviços
         li.nav-item
-            a.nav-link(data-toggle='tab', href='#contracts', role='tab', aria-controls='contracts') Ver contratos
+            a.contratosTab.nav-link(data-toggle='tab', href='#contracts', role='tab', aria-controls='contracts') Ver contratos
       .tab-content
         #search.tab-pane.fade.show.active(role='tabpanel' style="margin-top: 1rem")
             h3 Busque um serviço
@@ -30,7 +30,7 @@ block content
                                         p.card-text
                                             =service.description
                                             |  
-                                        a.btn.btn-primary(href=service.contractRoute) Negociar
+                                        a.negociar.btn.btn-primary(href=service.contractRoute) Negociar
         #contracts.tab-pane.fade(role='tabpanel' style="margin-top: 1rem")
             .row
                 each contrato in contratos
@@ -41,7 +41,7 @@ block content
                                 p.card-text
                                     =contrato.Service.description
                                     |  
-                                a.btn.btn-primary(href=contrato.url) Cronograma
+                                a.cronograma.btn.btn-primary(href=contrato.url) Cronograma
 
     script.
         $(function () {

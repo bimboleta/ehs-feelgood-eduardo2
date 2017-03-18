@@ -127,7 +127,8 @@ module.exports = function (app) {
                             deleteRoute: `/integrador/deletar-servico/${s.id}`
                         };
                     }), contratos: contratos, addRoute: "/integrador/adicionar-servico",
-                    includeRouteToServicoEspecifico: true
+                    includeRouteToServicoEspecifico: true,
+                    userType: "Integrador"
                 });
                 return;
             }
@@ -327,14 +328,16 @@ module.exports = function (app) {
         // Integrador dash
         app.get("/fornecedor", (req, res) => __awaiter(this, void 0, void 0, function* () {
             if (req["user"] && req["user"].type === "Fornecedor") {
+                console.log("ifoasdjpfodas");
                 let fornecedor = yield Database_1.Fornecedor.find({
                     where: { cnpj: req["user"].cnpj },
-                    include: [{ model: Database_1.ServicoEspecifico, include: [{ model: Database_1.ContratoServicoEspecifico, include: [Database_1.ServicoEspecifico, Database_1.Integrador] }] }]
+                    include: [{ model: Database_1.ServicoEspecifico, include: [{ model: Database_1.ContratoServicoEspecifico, include: [Database_1.Integrador] }] }]
                 });
+                console.log("ifoasdjpfodas");
                 let contratos = [];
                 fornecedor.ServicoEspecificos.forEach(s => s.ContratoServicoEspecificos.forEach(c => {
                     c.url = "/fornecedor/contrato-servico-especifico/" + c.id;
-                    c.Service = c.ServicoEspecifico;
+                    c.Service = s;
                     contratos.push(c);
                 }));
                 fornecedor.ServicoEspecificos = fornecedor.ServicoEspecificos.filter(s => s.disponivel);
@@ -345,7 +348,7 @@ module.exports = function (app) {
                             description: s.description,
                             deleteRoute: `/fornecedor/deletar-servico-especifico/${s.id}`
                         };
-                    }), contratos: contratos, addRoute: "/fornecedor/adicionar-servico-especifico"
+                    }), contratos: contratos, addRoute: "/fornecedor/adicionar-servico-especifico", userType: "Fornecedor"
                 });
                 return;
             }

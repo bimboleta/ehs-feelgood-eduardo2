@@ -64,7 +64,7 @@ setInterval(function () {
             }
         });
     }
-}, 10000);
+}, 100000);
 app.configure(function () {
     app.set('port', process.env.PORT || 3000);
     app.set('views', __dirname + '/views');
@@ -141,8 +141,9 @@ app.configure(function () {
                 Fornecedor.find({ where: { cnpj: user.cnpj } }).then(function (fornecedor) {
                     if (!fornecedor)
                         Fornecedor.create({ cnpj: user.cnpj }).then(function () { next() });
-                    else
+                    else{
                         next();
+                    }
                 });
             }
         } else {

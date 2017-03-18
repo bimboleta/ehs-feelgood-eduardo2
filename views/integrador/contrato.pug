@@ -30,7 +30,7 @@ block content
                     li.list-group-item
                         form(action=addStateRoute||`/integrador/contrato/${contrato.id}/novo-estado` method="POST" style="width: 100%")
                             input.form-control(type="text" name="estado")
-                            button.btn.btn-primary(style="margin-top: 1rem") Adicionar novo estado
+                            button.adicionar-estado.btn.btn-primary(style="margin-top: 1rem") Adicionar novo estado
 
         .card(style="margin-top: 1rem")
             .card-header 
@@ -56,7 +56,7 @@ block content
                                 td
                                     input.form-control(name="value")
                                 td
-                                    button.btn.btn-primary Adicionar
+                                    button.adicionar-gasto.btn.btn-primary Adicionar
 
                             
 

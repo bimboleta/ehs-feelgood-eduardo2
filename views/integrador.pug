@@ -4,14 +4,14 @@ block content
     section(class="featured")
       div(class="content-wrapper")
           hgroup(class="title")
-              h1 Painel do Integrador
+              h1 Painel do #{userType}
 
     section(class="main-content")
       ul#myTab.nav.nav-tabs(role='tablist')
         li.nav-item
             a.nav-link.active(data-toggle='tab', href='#search', role='tab', aria-controls='search') Manipular serviços
         li.nav-item
-            a.nav-link(data-toggle='tab', href='#contracts', role='tab', aria-controls='contracts') Manipular contratos
+            a.contratosTab.nav-link(data-toggle='tab', href='#contracts', role='tab', aria-controls='contracts') Manipular contratos
       .tab-content
         #search.tab-pane.fade.show.active(role='tabpanel' style="margin-top: 1rem")
             h3 Adicione um servico
@@ -50,7 +50,7 @@ block content
                                 p.card-text
                                     =contrato.Service.description
                                     |  
-                                a.btn.btn-primary(href=contrato.url) Cronograma
+                                a.cronograma.btn.btn-primary(href=contrato.url) Cronograma
 
     script.
         $(function () {

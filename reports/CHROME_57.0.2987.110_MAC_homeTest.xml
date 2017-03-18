@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="5">
+
+  <testsuite name="homeTest"
+    errors="0" failures="0" hostname="" id="" package="homeTest" skipped="0"
+    tests="5" time="23.99" timestamp="Sat, 18 Mar 2017 20:03:08 GMT">
+  
+    <testcase name="Abre página principal" classname="homeTest" time="3.725" assertions="1">
+
+    
+    </testcase>
+  
+    <testcase name="Adiciona, deleta e adiciona servico específico" classname="homeTest" time="5.574" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Integrador contrata serviço específico" classname="homeTest" time="4.871" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Fornecedor modifica cronograma e gastos" classname="homeTest" time="5.600" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Integrador ve cronograma e gastos" classname="homeTest" time="4.216" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+  
+  </testsuite>
+</testsuites>
