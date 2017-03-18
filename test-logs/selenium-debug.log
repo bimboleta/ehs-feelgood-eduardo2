@@ -1,74 +1,48 @@
-14:50:17.939 INFO - Selenium build info: version: '3.3.1', revision: '5234b32'
-14:50:17.941 INFO - Launching a standalone Selenium Server
-2017-03-18 14:50:17.984:INFO::main: Logging initialized @649ms to org.seleniumhq.jetty9.util.log.StdErrLog
-14:50:18.081 INFO - Driver provider org.openqa.selenium.ie.InternetExplorerDriver registration is skipped:
+15:01:35.815 INFO - Selenium build info: version: '3.3.1', revision: '5234b32'
+15:01:35.815 INFO - Launching a standalone Selenium Server
+2017-03-18 15:01:35.834:INFO::main: Logging initialized @240ms to org.seleniumhq.jetty9.util.log.StdErrLog
+15:01:35.891 INFO - Driver provider org.openqa.selenium.ie.InternetExplorerDriver registration is skipped:
  registration capabilities Capabilities [{ensureCleanSession=true, browserName=internet explorer, version=, platform=WINDOWS}] does not match the current platform MAC
-14:50:18.081 INFO - Driver provider org.openqa.selenium.edge.EdgeDriver registration is skipped:
+15:01:35.891 INFO - Driver provider org.openqa.selenium.edge.EdgeDriver registration is skipped:
  registration capabilities Capabilities [{browserName=MicrosoftEdge, version=, platform=WINDOWS}] does not match the current platform MAC
-14:50:18.081 INFO - Driver class not found: com.opera.core.systems.OperaDriver
-14:50:18.081 INFO - Driver provider com.opera.core.systems.OperaDriver registration is skipped:
+15:01:35.892 INFO - Driver class not found: com.opera.core.systems.OperaDriver
+15:01:35.892 INFO - Driver provider com.opera.core.systems.OperaDriver registration is skipped:
 Unable to create new instances on this machine.
-14:50:18.081 INFO - Driver class not found: com.opera.core.systems.OperaDriver
-14:50:18.081 INFO - Driver provider com.opera.core.systems.OperaDriver is not registered
-2017-03-18 14:50:18.171:INFO:osjs.Server:main: jetty-9.2.20.v20161216
-2017-03-18 14:50:18.226:INFO:osjsh.ContextHandler:main: Started o.s.j.s.ServletContextHandler@685cb137{/,null,AVAILABLE}
-2017-03-18 14:50:18.282:INFO:osjs.AbstractConnector:main: Started ServerConnector@5bcab519{HTTP/1.1,[http/1.1]}{0.0.0.0:4444}
-2017-03-18 14:50:18.283:INFO:osjs.Server:main: Started @948ms
-14:50:18.283 INFO - Selenium Server is up and running
-14:50:18.597 INFO - SessionCleaner initialized with insideBrowserTimeout 0 and clientGoneTimeout 1800000 polling every 180000
-14:50:18.638 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Home, browserName=phantomJs, javascriptEnabled=true, platform=ANY}]])
-14:50:18.696 WARN - Exception thrown
-java.util.concurrent.ExecutionException: org.openqa.selenium.WebDriverException: The best matching driver provider org.openqa.selenium.safari.SafariDriver can't create a new driver instance for Capabilities [{acceptSslCerts=true, name=Home, browserName=phantomJs, javascriptEnabled=true, platform=ANY}]
-Build info: version: '3.3.1', revision: '5234b32', time: '2017-03-10 09:04:52 -0800'
-System info: host: 'MacBook-Pro-de-Eduardo.local', ip: 'fe80:0:0:0:1446:5d1d:5c48:53cf%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.12.3', java.version: '1.8.0_121'
-Driver info: driver.version: unknown
-	at java.util.concurrent.FutureTask.report(FutureTask.java:122)
-	at java.util.concurrent.FutureTask.get(FutureTask.java:192)
-	at org.openqa.selenium.remote.server.DefaultSession.execute(DefaultSession.java:183)
-	at org.openqa.selenium.remote.server.DefaultSession.<init>(DefaultSession.java:119)
-	at org.openqa.selenium.remote.server.DefaultSession.createSession(DefaultSession.java:95)
-	at org.openqa.selenium.remote.server.DefaultDriverSessions.newSession(DefaultDriverSessions.java:131)
-	at org.openqa.selenium.remote.server.handler.NewSession.handle(NewSession.java:59)
-	at org.openqa.selenium.remote.server.handler.NewSession.handle(NewSession.java:36)
-	at org.openqa.selenium.remote.server.rest.ResultConfig.handle(ResultConfig.java:111)
-	at org.openqa.selenium.remote.server.JsonHttpCommandHandler.handleRequest(JsonHttpCommandHandler.java:190)
-	at org.openqa.selenium.remote.server.DriverServlet.handleRequest(DriverServlet.java:222)
-	at org.openqa.selenium.remote.server.DriverServlet.doPost(DriverServlet.java:184)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
-	at org.openqa.selenium.remote.server.DriverServlet.service(DriverServlet.java:150)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
-	at org.seleniumhq.jetty9.servlet.ServletHolder.handle(ServletHolder.java:841)
-	at org.seleniumhq.jetty9.servlet.ServletHandler.doHandle(ServletHandler.java:543)
-	at org.seleniumhq.jetty9.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:188)
-	at org.seleniumhq.jetty9.server.handler.ContextHandler.doHandle(ContextHandler.java:1228)
-	at org.seleniumhq.jetty9.server.handler.ScopedHandler.nextScope(ScopedHandler.java:168)
-	at org.seleniumhq.jetty9.servlet.ServletHandler.doScope(ServletHandler.java:481)
-	at org.seleniumhq.jetty9.server.handler.ScopedHandler.nextScope(ScopedHandler.java:166)
-	at org.seleniumhq.jetty9.server.handler.ContextHandler.doScope(ContextHandler.java:1130)
-	at org.seleniumhq.jetty9.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
-	at org.seleniumhq.jetty9.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
-	at org.seleniumhq.jetty9.server.Server.handle(Server.java:564)
-	at org.seleniumhq.jetty9.server.HttpChannel.handle(HttpChannel.java:320)
-	at org.seleniumhq.jetty9.server.HttpConnection.onFillable(HttpConnection.java:251)
-	at org.seleniumhq.jetty9.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:279)
-	at org.seleniumhq.jetty9.io.FillInterest.fillable(FillInterest.java:112)
-	at org.seleniumhq.jetty9.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124)
-	at org.seleniumhq.jetty9.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:672)
-	at org.seleniumhq.jetty9.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:590)
-	at java.lang.Thread.run(Thread.java:745)
-Caused by: org.openqa.selenium.WebDriverException: The best matching driver provider org.openqa.selenium.safari.SafariDriver can't create a new driver instance for Capabilities [{acceptSslCerts=true, name=Home, browserName=phantomJs, javascriptEnabled=true, platform=ANY}]
-Build info: version: '3.3.1', revision: '5234b32', time: '2017-03-10 09:04:52 -0800'
-System info: host: 'MacBook-Pro-de-Eduardo.local', ip: 'fe80:0:0:0:1446:5d1d:5c48:53cf%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.12.3', java.version: '1.8.0_121'
-Driver info: driver.version: unknown
-	at org.openqa.selenium.remote.server.DefaultDriverFactory.newInstance(DefaultDriverFactory.java:62)
-	at org.openqa.selenium.remote.server.DefaultSession$BrowserCreator.call(DefaultSession.java:222)
-	at org.openqa.selenium.remote.server.DefaultSession$BrowserCreator.call(DefaultSession.java:209)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
-	at org.openqa.selenium.remote.server.DefaultSession$1.run(DefaultSession.java:176)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
-	... 1 more
-14:50:18.705 WARN - Exception: The best matching driver provider org.openqa.selenium.safari.SafariDriver can't create a new driver instance for Capabilities [{acceptSslCerts=true, name=Home, browserName=phantomJs, javascriptEnabled=true, platform=ANY}]
-Build info: version: '3.3.1', revision: '5234b32', time: '2017-03-10 09:04:52 -0800'
-System info: host: 'MacBook-Pro-de-Eduardo.local', ip: 'fe80:0:0:0:1446:5d1d:5c48:53cf%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.12.3', java.version: '1.8.0_121'
-Driver info: driver.version: unknown
+15:01:35.892 INFO - Driver class not found: com.opera.core.systems.OperaDriver
+15:01:35.892 INFO - Driver provider com.opera.core.systems.OperaDriver is not registered
+2017-03-18 15:01:35.935:INFO:osjs.Server:main: jetty-9.2.20.v20161216
+2017-03-18 15:01:35.974:INFO:osjsh.ContextHandler:main: Started o.s.j.s.ServletContextHandler@685cb137{/,null,AVAILABLE}
+2017-03-18 15:01:36.006:INFO:osjs.AbstractConnector:main: Started ServerConnector@5bcab519{HTTP/1.1,[http/1.1]}{0.0.0.0:4444}
+2017-03-18 15:01:36.007:INFO:osjs.Server:main: Started @413ms
+15:01:36.007 INFO - Selenium Server is up and running
+15:01:36.232 INFO - SessionCleaner initialized with insideBrowserTimeout 0 and clientGoneTimeout 1800000 polling every 180000
+15:01:36.255 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Home, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+15:01:36.268 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Home, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.28.455517 (2c6d2707d8ea850c862f04ac066724273981e88f) on port 45203
+Only local connections are allowed.
+15:01:37.466 INFO - Detected dialect: OSS
+15:01:37.489 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Home, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+15:01:37.510 INFO - Executing: [get: http://www.google.com])
+15:01:42.566 INFO - Done: [get: http://www.google.com]
+15:01:42.575 INFO - Executing: [find elements: By.cssSelector: body])
+15:01:42.613 INFO - Done: [find elements: By.cssSelector: body]
+15:01:42.619 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (7b4d8467bb0aa012e5e4329a7b133518)] -> css selector: body]])
+15:01:42.642 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (7b4d8467bb0aa012e5e4329a7b133518)] -> css selector: body]]
+15:01:42.648 INFO - Executing: [find element: By.cssSelector: input[type=text]])
+15:01:42.669 INFO - Done: [find element: By.cssSelector: input[type=text]]
+15:01:42.674 INFO - Executing: [send keys: 1 [[ChromeDriver: chrome on MAC (7b4d8467bb0aa012e5e4329a7b133518)] -> css selector: input[type=text]], [n, i, g, h, t, w, a, t, c, h]])
+15:01:42.802 INFO - Done: [send keys: 1 [[ChromeDriver: chrome on MAC (7b4d8467bb0aa012e5e4329a7b133518)] -> css selector: input[type=text]], [n, i, g, h, t, w, a, t, c, h]]
+15:01:42.809 INFO - Executing: [find elements: By.cssSelector: button[name=btnG]])
+15:01:42.831 INFO - Done: [find elements: By.cssSelector: button[name=btnG]]
+15:01:42.835 INFO - Executing: [is displayed: 2 [[ChromeDriver: chrome on MAC (7b4d8467bb0aa012e5e4329a7b133518)] -> css selector: button[name=btnG]]])
+15:01:42.853 INFO - Done: [is displayed: 2 [[ChromeDriver: chrome on MAC (7b4d8467bb0aa012e5e4329a7b133518)] -> css selector: button[name=btnG]]]
+15:01:42.857 INFO - Executing: [find element: By.cssSelector: button[name=btnG]])
+15:01:42.879 INFO - Done: [find element: By.cssSelector: button[name=btnG]]
+15:01:42.884 INFO - Executing: [click: 2 [[ChromeDriver: chrome on MAC (7b4d8467bb0aa012e5e4329a7b133518)] -> css selector: button[name=btnG]]])
+15:01:42.975 INFO - Done: [click: 2 [[ChromeDriver: chrome on MAC (7b4d8467bb0aa012e5e4329a7b133518)] -> css selector: button[name=btnG]]]
+15:01:43.983 INFO - Executing: [find element: By.cssSelector: #main])
+15:01:44.060 INFO - Done: [find element: By.cssSelector: #main]
+15:01:44.065 INFO - Executing: [get text: 3 [[ChromeDriver: chrome on MAC (7b4d8467bb0aa012e5e4329a7b133518)] -> css selector: #main]])
+15:01:44.289 INFO - Done: [get text: 3 [[ChromeDriver: chrome on MAC (7b4d8467bb0aa012e5e4329a7b133518)] -> css selector: #main]]
+15:01:44.301 INFO - Executing: [delete session: 8e1fe2d1-0132-4203-ae0f-4b8097d6ce8d])
+15:01:44.434 INFO - Done: [delete session: 8e1fe2d1-0132-4203-ae0f-4b8097d6ce8d]
