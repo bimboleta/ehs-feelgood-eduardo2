@@ -21,5 +21,5 @@ block content
                         each tarifacao in tarifacoes
                                 tr
                                     td=tarifacao.identificador
-                                    td=`${Math.ceil(tarifacao.tempo)} s`
-                                    td=`${Math.ceil(tarifacao.valor)} $`
+                                    td=`${tarifacao.tempo} s`
+                                    td=`${tarifacao.valor.formatMoney(2, ",", ".")} $`

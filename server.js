@@ -40,31 +40,35 @@ app.use(function (req, res, next) {
     req.id = makeID()
     next()
 });
+var async = require("async");
 
 var requestTimer = {};
 var userTax = {};
 setInterval(function () {
-    for (var id in userTax) {
-        Tarifacao.find({ identificador: id }).then(__ => {
+    async.mapSeries(Object.keys(userTax), (id, next) => {
+
+        Tarifacao.find({where: { identificador: id }}).then(__ => {
             if (__ !== null) {
                 sequelize.transaction(t => {
-                    return Tarifacao.find({ identificador: id }, { transaction: t }).then(tarifa => {
+                    return Tarifacao.find({ where: { identificador: id } }, { transaction: t }).then(tarifa => {
                         tarifa.tempo += userTax[id] / 1000;
                         return tarifa.save({ transaction: t });
                     });
                 }).then(() => {
                     userTax[id] = 0;
+                    next();
                 })
             } else {
                 sequelize.transaction(t => {
                     return Tarifacao.create({ identificador: id, tempo: userTax[id] / 1000 }, { transaction: t });
                 }).then(() => {
                     userTax[id] = 0;
+                    next();
                 });
             }
         });
-    }
-}, 100000);
+    }, () => { });
+}, 10000);
 app.configure(function () {
     app.set('port', process.env.PORT || 3000);
     app.set('views', __dirname + '/views');
@@ -91,7 +95,7 @@ app.configure(function () {
             let processedTime;
             setTimeout(() => {
                 // Se passar de 15 segundos e não responder, não cobrar
-                if(processedTime !== undefined && !isNaN(processedTime)){
+                if (processedTime !== undefined && !isNaN(processedTime)) {
                     let user = req["user"];
                     if (user.type === "Cliente") {
                         if (userTax[user.cpf] !== undefined)
@@ -109,7 +113,7 @@ app.configure(function () {
                 delete requestTimer[req.id];
             }, 15000);
             req.on("end", function () {
-                if(requestTimer[req.id] !== undefined){
+                if (requestTimer[req.id] !== undefined) {
 
                     processedTime = process.hrtime()[0] * 1000 + process.hrtime()[1] / 1000000 - requestTimer[req.id];
                 }
@@ -141,7 +145,7 @@ app.configure(function () {
                 Fornecedor.find({ where: { cnpj: user.cnpj } }).then(function (fornecedor) {
                     if (!fornecedor)
                         Fornecedor.create({ cnpj: user.cnpj }).then(function () { next() });
-                    else{
+                    else {
                         next();
                     }
                 });
