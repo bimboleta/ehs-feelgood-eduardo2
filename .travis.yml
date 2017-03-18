@@ -11,6 +11,6 @@ before_script:
   # install meteor
   - psql -c "CREATE USER tester WITH PASSWORD 'test';" -U postgres
   - psql -c "create database test;"  -U postgres
-  - psql -c "GRANT ALL PRIVILEGES ON DATABASE 'test' to tester;" -U postgres
+  - psql -c "GRANT ALL PRIVILEGES ON DATABASE test to tester;" -U postgres
   - npm install -g nightwatch
 script: npm test
