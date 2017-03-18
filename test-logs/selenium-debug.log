@@ -1,43 +1,27 @@
-15:15:25.096 INFO - Launching a standalone server
-15:15:25.160 INFO - Java: Oracle Corporation 25.121-b13
-15:15:25.161 INFO - OS: Mac OS X 10.12.3 x86_64
-15:15:25.188 INFO - v2.44.0, with Core v2.44.0. Built from revision 76d78cf
-15:15:25.317 INFO - Default driver org.openqa.selenium.ie.InternetExplorerDriver registration is skipped: registration capabilities Capabilities [{ensureCleanSession=true, browserName=internet explorer, version=, platform=WINDOWS}] does not match with current platform: MAC
-15:15:25.362 INFO - RemoteWebDriver instances should connect to: http://127.0.0.1:4444/wd/hub
-15:15:25.363 INFO - Version Jetty/5.1.x
-15:15:25.364 INFO - Started HttpContext[/selenium-server,/selenium-server]
-15:15:25.411 INFO - Started org.openqa.jetty.jetty.servlet.ServletHandler@725bef66
-15:15:25.411 INFO - Started HttpContext[/wd,/wd]
-15:15:25.411 INFO - Started HttpContext[/selenium-server/driver,/selenium-server/driver]
-15:15:25.411 INFO - Started HttpContext[/,/]
-15:15:25.419 INFO - Started SocketListener on 0.0.0.0:4444
-15:15:25.419 INFO - Started org.openqa.jetty.jetty.Server@30dae81
-15:15:25.735 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Home, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
-15:15:25.751 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Home, browserName=chrome, javascriptEnabled=true, platform=ANY}]
-Starting ChromeDriver 2.28.455517 (2c6d2707d8ea850c862f04ac066724273981e88f) on port 16493
+15:31:56.789 INFO - Launching a standalone server
+15:31:56.829 INFO - Java: Oracle Corporation 25.121-b13
+15:31:56.829 INFO - OS: Mac OS X 10.12.3 x86_64
+15:31:56.839 INFO - v2.44.0, with Core v2.44.0. Built from revision 76d78cf
+15:31:56.922 INFO - Default driver org.openqa.selenium.ie.InternetExplorerDriver registration is skipped: registration capabilities Capabilities [{ensureCleanSession=true, browserName=internet explorer, version=, platform=WINDOWS}] does not match with current platform: MAC
+15:31:56.953 INFO - RemoteWebDriver instances should connect to: http://127.0.0.1:4444/wd/hub
+15:31:56.954 INFO - Version Jetty/5.1.x
+15:31:56.955 INFO - Started HttpContext[/selenium-server,/selenium-server]
+15:31:56.983 INFO - Started org.openqa.jetty.jetty.servlet.ServletHandler@725bef66
+15:31:56.983 INFO - Started HttpContext[/wd,/wd]
+15:31:56.983 INFO - Started HttpContext[/selenium-server/driver,/selenium-server/driver]
+15:31:56.983 INFO - Started HttpContext[/,/]
+15:31:56.988 INFO - Started SocketListener on 0.0.0.0:4444
+15:31:56.989 INFO - Started org.openqa.jetty.jetty.Server@30dae81
+15:31:57.258 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Home, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+15:31:57.266 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Home, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.28.455517 (2c6d2707d8ea850c862f04ac066724273981e88f) on port 47964
 Only local connections are allowed.
-15:15:28.202 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Home, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
-15:15:28.215 INFO - Executing: [get: http://www.google.com])
-15:15:33.405 INFO - Done: [get: http://www.google.com]
-15:15:33.412 INFO - Executing: [find elements: By.selector: body])
-15:15:33.446 INFO - Done: [find elements: By.selector: body]
-15:15:33.451 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (823e9910244b4fe9dab55f88016d4454)] -> css selector: body]])
-15:15:33.470 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (823e9910244b4fe9dab55f88016d4454)] -> css selector: body]]
-15:15:33.476 INFO - Executing: [find element: By.selector: input[type=text]])
-15:15:33.500 INFO - Done: [find element: By.selector: input[type=text]]
-15:15:33.505 INFO - Executing: [send keys: 1 [[ChromeDriver: chrome on MAC (823e9910244b4fe9dab55f88016d4454)] -> css selector: input[type=text]], [n, i, g, h, t, w, a, t, c, h]])
-15:15:33.634 INFO - Done: [send keys: 1 [[ChromeDriver: chrome on MAC (823e9910244b4fe9dab55f88016d4454)] -> css selector: input[type=text]], [n, i, g, h, t, w, a, t, c, h]]
-15:15:33.638 INFO - Executing: [find elements: By.selector: button[name=btnG]])
-15:15:33.660 INFO - Done: [find elements: By.selector: button[name=btnG]]
-15:15:33.663 INFO - Executing: [is displayed: 2 [[ChromeDriver: chrome on MAC (823e9910244b4fe9dab55f88016d4454)] -> css selector: button[name=btnG]]])
-15:15:33.684 INFO - Done: [is displayed: 2 [[ChromeDriver: chrome on MAC (823e9910244b4fe9dab55f88016d4454)] -> css selector: button[name=btnG]]]
-15:15:33.688 INFO - Executing: [find element: By.selector: button[name=btnG]])
-15:15:33.716 INFO - Done: [find element: By.selector: button[name=btnG]]
-15:15:33.721 INFO - Executing: [click: 2 [[ChromeDriver: chrome on MAC (823e9910244b4fe9dab55f88016d4454)] -> css selector: button[name=btnG]]])
-15:15:33.809 INFO - Done: [click: 2 [[ChromeDriver: chrome on MAC (823e9910244b4fe9dab55f88016d4454)] -> css selector: button[name=btnG]]]
-15:15:34.820 INFO - Executing: [find element: By.selector: #main])
-15:15:34.846 INFO - Done: [find element: By.selector: #main]
-15:15:34.849 INFO - Executing: [get text: 3 [[ChromeDriver: chrome on MAC (823e9910244b4fe9dab55f88016d4454)] -> css selector: #main]])
-15:15:35.080 INFO - Done: [get text: 3 [[ChromeDriver: chrome on MAC (823e9910244b4fe9dab55f88016d4454)] -> css selector: #main]]
-15:15:35.090 INFO - Executing: [delete session: 03fa6e5b-ebda-40e4-9d60-9636b0a11fa8])
-15:15:35.657 INFO - Done: [delete session: 03fa6e5b-ebda-40e4-9d60-9636b0a11fa8]
+15:31:58.792 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Home, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+15:31:58.802 INFO - Executing: [get: http://localhost:3000])
+15:32:00.411 INFO - Done: [get: http://localhost:3000]
+15:32:00.420 INFO - Executing: [find elements: By.selector: body])
+15:32:00.473 INFO - Done: [find elements: By.selector: body]
+15:32:00.480 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (ad7c44e95333788d4680dccdfa952c16)] -> css selector: body]])
+15:32:00.505 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (ad7c44e95333788d4680dccdfa952c16)] -> css selector: body]]
+15:32:00.511 INFO - Executing: [delete session: d2480e33-3388-4c71-a70c-f7a74b1b52c5])
+15:32:01.083 INFO - Done: [delete session: d2480e33-3388-4c71-a70c-f7a74b1b52c5]
