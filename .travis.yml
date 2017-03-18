@@ -9,6 +9,7 @@ before_script:
   # set the xvfb screen size to 1280x1024x16
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
   # install meteor
+  - psql -c "CREATE DATABASE;"
   - psql -c "CREATE USER tester WITH PASSWORD 'test';"
   - psql -c "create database test;"
   - psql -c "GRANT ALL PRIVILEGES ON DATABASE 'test' to tester;"
