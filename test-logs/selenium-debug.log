@@ -1,27 +1,27 @@
-15:34:33.368 INFO - Launching a standalone server
-15:34:33.408 INFO - Java: Oracle Corporation 25.121-b13
-15:34:33.408 INFO - OS: Mac OS X 10.12.3 x86_64
-15:34:33.418 INFO - v2.44.0, with Core v2.44.0. Built from revision 76d78cf
-15:34:33.501 INFO - Default driver org.openqa.selenium.ie.InternetExplorerDriver registration is skipped: registration capabilities Capabilities [{ensureCleanSession=true, browserName=internet explorer, version=, platform=WINDOWS}] does not match with current platform: MAC
-15:34:33.535 INFO - RemoteWebDriver instances should connect to: http://127.0.0.1:4444/wd/hub
-15:34:33.536 INFO - Version Jetty/5.1.x
-15:34:33.537 INFO - Started HttpContext[/selenium-server,/selenium-server]
-15:34:33.560 INFO - Started org.openqa.jetty.jetty.servlet.ServletHandler@725bef66
-15:34:33.560 INFO - Started HttpContext[/wd,/wd]
-15:34:33.561 INFO - Started HttpContext[/selenium-server/driver,/selenium-server/driver]
-15:34:33.561 INFO - Started HttpContext[/,/]
-15:34:33.565 INFO - Started SocketListener on 0.0.0.0:4444
-15:34:33.566 INFO - Started org.openqa.jetty.jetty.Server@30dae81
-15:34:33.822 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Home, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
-15:34:33.830 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Home, browserName=chrome, javascriptEnabled=true, platform=ANY}]
-Starting ChromeDriver 2.28.455517 (2c6d2707d8ea850c862f04ac066724273981e88f) on port 45092
+15:37:30.327 INFO - Launching a standalone server
+15:37:30.383 INFO - Java: Oracle Corporation 25.121-b13
+15:37:30.383 INFO - OS: Mac OS X 10.12.3 x86_64
+15:37:30.402 INFO - v2.44.0, with Core v2.44.0. Built from revision 76d78cf
+15:37:30.512 INFO - Default driver org.openqa.selenium.ie.InternetExplorerDriver registration is skipped: registration capabilities Capabilities [{ensureCleanSession=true, browserName=internet explorer, version=, platform=WINDOWS}] does not match with current platform: MAC
+15:37:30.546 INFO - RemoteWebDriver instances should connect to: http://127.0.0.1:4444/wd/hub
+15:37:30.547 INFO - Version Jetty/5.1.x
+15:37:30.548 INFO - Started HttpContext[/selenium-server,/selenium-server]
+15:37:30.586 INFO - Started org.openqa.jetty.jetty.servlet.ServletHandler@725bef66
+15:37:30.587 INFO - Started HttpContext[/wd,/wd]
+15:37:30.587 INFO - Started HttpContext[/selenium-server/driver,/selenium-server/driver]
+15:37:30.587 INFO - Started HttpContext[/,/]
+15:37:30.592 INFO - Started SocketListener on 0.0.0.0:4444
+15:37:30.592 INFO - Started org.openqa.jetty.jetty.Server@30dae81
+15:37:30.915 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Home, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+15:37:30.930 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Home, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.28.455517 (2c6d2707d8ea850c862f04ac066724273981e88f) on port 36709
 Only local connections are allowed.
-15:34:35.372 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Home, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
-15:34:35.384 INFO - Executing: [get: http://localhost:3000])
-15:34:37.202 INFO - Done: [get: http://localhost:3000]
-15:34:37.208 INFO - Executing: [find elements: By.selector: body])
-15:34:37.246 INFO - Done: [find elements: By.selector: body]
-15:34:37.251 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (98d281c682fcac3f66a3c4aa38817f08)] -> css selector: body]])
-15:34:37.273 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (98d281c682fcac3f66a3c4aa38817f08)] -> css selector: body]]
-15:34:37.278 INFO - Executing: [delete session: b84dc287-9d6b-4152-80f9-34e64acd4d53])
-15:34:37.846 INFO - Done: [delete session: b84dc287-9d6b-4152-80f9-34e64acd4d53]
+15:37:33.323 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Home, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+15:37:33.337 INFO - Executing: [get: http://localhost:3000])
+15:37:39.156 INFO - Done: [get: http://localhost:3000]
+15:37:39.164 INFO - Executing: [find elements: By.selector: body])
+15:37:39.198 INFO - Done: [find elements: By.selector: body]
+15:37:39.203 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (170113710d957ac77325398848b1f04c)] -> css selector: body]])
+15:37:39.229 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (170113710d957ac77325398848b1f04c)] -> css selector: body]]
+15:37:39.235 INFO - Executing: [delete session: 8adb08a2-dee9-48cb-a8f5-1b0070d07603])
+15:37:39.802 INFO - Done: [delete session: 8adb08a2-dee9-48cb-a8f5-1b0070d07603]
