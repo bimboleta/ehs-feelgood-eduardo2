@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node server",
-    "test": "pkill -f 'node server' 2> /dev/null ; node server > /dev/null & nightwatch"
+    "test": "node server > /dev/null & nightwatch"
   },
   "dependencies": {
     "everyauth": "https://github.com/bnoguchi/everyauth/tarball/express3",
