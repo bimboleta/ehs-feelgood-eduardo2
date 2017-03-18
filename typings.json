@@ -4,5 +4,8 @@
     "express": "registry:npm/express#4.14.0+20170217205433",
     "jsonwebtoken": "registry:npm/jsonwebtoken#7.1.8+20160811031426",
     "sequelize": "registry:dt/sequelize#4.0.0+20170216060430"
+  },
+  "globalDependencies": {
+    "node": "registry:env/node#6.0.0+20170213133316"
   }
 }

@@ -7,6 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 const Sequelize = require("sequelize");
 const Service_1 = require("./Service");
 const Contrato_1 = require("./Contrato");
@@ -16,18 +17,31 @@ const ContratoServicoEspecifico_1 = require("./ContratoServicoEspecifico");
 const Fornecedor_1 = require("./Fornecedor");
 const ServicoEspecifico_1 = require("./ServicoEspecifico");
 const Tarifacao_1 = require("./Tarifacao");
-exports.sequelize = new Sequelize('e-feelgood', 'kiki', 'bobobobo!1', {
-    host: 'e-feelgood.database.windows.net',
-    dialect: 'mssql',
-    pool: {
-        max: 5,
-        min: 0,
-        idle: 10000
-    },
-    dialectOptions: {
-        encrypt: true
-    }
-});
+if (process.env.PORT === undefined) {
+    exports.sequelize = new Sequelize('test', 'tester', 'test', {
+        host: 'localhost',
+        dialect: 'postgres',
+        pool: {
+            max: 5,
+            min: 0,
+            idle: 10000
+        }
+    });
+}
+else {
+    exports.sequelize = new Sequelize('e-feelgood', 'kiki', 'bobobobo!1', {
+        host: 'e-feelgood.database.windows.net',
+        dialect: 'mssql',
+        pool: {
+            max: 5,
+            min: 0,
+            idle: 10000
+        },
+        dialectOptions: {
+            encrypt: true
+        }
+    });
+}
 exports.Cliente = Cliente_1.ClienteModelGenerator(exports.sequelize);
 exports.Contrato = Contrato_1.ContratoModelGenerator(exports.sequelize);
 exports.ContratoServicoEspecifico = ContratoServicoEspecifico_1.ContratoServicoEspecificoModelGenerator(exports.sequelize);
