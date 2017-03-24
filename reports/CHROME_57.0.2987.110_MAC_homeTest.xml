@@ -5,19 +5,9 @@
 
   <testsuite name="homeTest"
     errors="0" failures="0" hostname="" id="" package="homeTest" skipped="0"
-    tests="11" time="73.66" timestamp="Sat, 18 Mar 2017 22:41:15 GMT">
+    tests="11" time="87.29" timestamp="Sat, 18 Mar 2017 22:44:31 GMT">
   
-    <testcase name="Verifica se não há tarifações para o cliente" classname="homeTest" time="6.389" assertions="1">
-
-    
-    </testcase>
-  
-    <testcase name="Abre página principal" classname="homeTest" time="7.951" assertions="1">
-
-    
-    </testcase>
-  
-    <testcase name="Adiciona, deleta e adiciona servico" classname="homeTest" time="9.287" assertions="3">
+    <testcase name="Verifica se não há tarifações para o cliente, integrador e fornecedor" classname="homeTest" time="5.898" assertions="3">
 
     
 
@@ -26,28 +16,12 @@
     
     </testcase>
   
-    <testcase name="Cliente contrata serviço" classname="homeTest" time="7.883" assertions="2">
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="Integrador modifica cronograma e gastos" classname="homeTest" time="8.695" assertions="2">
-
-    
+    <testcase name="Abre página principal" classname="homeTest" time="6.024" assertions="1">
 
     
     </testcase>
   
-    <testcase name="Cliente ve cronograma e gastos" classname="homeTest" time="5.669" assertions="2">
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="Adiciona, deleta e adiciona servico específico" classname="homeTest" time="7.019" assertions="3">
+    <testcase name="Adiciona, deleta e adiciona servico" classname="homeTest" time="9.089" assertions="3">
 
     
 
@@ -56,28 +30,62 @@
     
     </testcase>
   
-    <testcase name="Integrador contrata serviço específico" classname="homeTest" time="6.381" assertions="2">
+    <testcase name="Cliente contrata serviço" classname="homeTest" time="6.520" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="Fornecedor modifica cronograma e gastos" classname="homeTest" time="5.528" assertions="2">
+    <testcase name="Integrador modifica cronograma e gastos" classname="homeTest" time="8.552" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="Integrador ve cronograma e gastos" classname="homeTest" time="5.411" assertions="2">
+    <testcase name="Cliente ve cronograma e gastos" classname="homeTest" time="6.933" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="Verifica se há tarifações para o cliente" classname="homeTest" time="3.445" assertions="1">
+    <testcase name="Adiciona, deleta e adiciona servico específico" classname="homeTest" time="5.893" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Integrador contrata serviço específico" classname="homeTest" time="5.969" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Fornecedor modifica cronograma e gastos" classname="homeTest" time="5.939" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Integrador ve cronograma e gastos" classname="homeTest" time="5.878" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Verifica se há tarifações para o cliente, integrador e fornecedor" classname="homeTest" time="20.59" assertions="3">
+
+    
+
+    
 
     
     </testcase>
