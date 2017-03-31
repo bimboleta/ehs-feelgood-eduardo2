@@ -9,13 +9,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Sequelize = require("sequelize");
-const Service_1 = require("./Service");
-const Contrato_1 = require("./Contrato");
-const Cliente_1 = require("./Cliente");
-const Integrador_1 = require("./Integrador");
-const ContratoServicoEspecifico_1 = require("./ContratoServicoEspecifico");
-const Fornecedor_1 = require("./Fornecedor");
-const ServicoEspecifico_1 = require("./ServicoEspecifico");
 const Tarifacao_1 = require("./Tarifacao");
 if (process.env.PORT === undefined) {
     exports.sequelize = new Sequelize('test', 'tester', 'test', {
@@ -29,8 +22,8 @@ if (process.env.PORT === undefined) {
     });
 }
 else {
-    exports.sequelize = new Sequelize('e-feelgood', 'kiki', 'bobobobo!1', {
-        host: 'e-feelgood.database.windows.net',
+    exports.sequelize = new Sequelize('e2-feelgood', 'kiki', 'bobobobo!1', {
+        host: 'e2-feelgood.database.windows.net',
         dialect: 'mssql',
         pool: {
             max: 5,
@@ -42,28 +35,9 @@ else {
         }
     });
 }
-exports.Cliente = Cliente_1.ClienteModelGenerator(exports.sequelize);
-exports.Contrato = Contrato_1.ContratoModelGenerator(exports.sequelize);
-exports.ContratoServicoEspecifico = ContratoServicoEspecifico_1.ContratoServicoEspecificoModelGenerator(exports.sequelize);
-exports.Fornecedor = Fornecedor_1.FornecedorModelGenerator(exports.sequelize);
-exports.Integrador = Integrador_1.IntegradorModelGenerator(exports.sequelize);
-exports.Service = Service_1.ServiceModelGenerator(exports.sequelize);
-exports.ServicoEspecifico = ServicoEspecifico_1.ServicoEspecificoModelGenerator(exports.sequelize);
 exports.Tarifacao = Tarifacao_1.TarifacaoModelGenerator(exports.sequelize);
-exports.Contrato.belongsTo(exports.Service);
-exports.Contrato.belongsTo(exports.Cliente);
-exports.Service.hasMany(exports.Contrato);
-exports.Cliente.hasMany(exports.Contrato);
-exports.Service.belongsTo(exports.Integrador);
-exports.Integrador.hasMany(exports.Service);
-exports.ContratoServicoEspecifico.belongsTo(exports.Integrador);
-exports.ContratoServicoEspecifico.belongsTo(exports.ServicoEspecifico);
-exports.ServicoEspecifico.hasMany(exports.ContratoServicoEspecifico);
-exports.Integrador.hasMany(exports.ContratoServicoEspecifico);
-exports.ServicoEspecifico.belongsTo(exports.Fornecedor);
-exports.Fornecedor.hasMany(exports.ServicoEspecifico);
 if (process.env.PORT === undefined) {
-    exports.sequelize.sync({ force: true }).then(() => __awaiter(this, void 0, void 0, function* () { }));
+    exports.sequelize.sync({ force: false }).then(() => __awaiter(this, void 0, void 0, function* () { }));
 }
 else {
     exports.sequelize.sync({ force: false }).then(() => __awaiter(this, void 0, void 0, function* () {

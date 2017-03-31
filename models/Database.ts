@@ -1,11 +1,4 @@
 import * as Sequelize from "sequelize";
-import { ServiceModelGenerator } from './Service';
-import { ContratoModelGenerator } from './Contrato';
-import { ClienteModelGenerator } from './Cliente';
-import { IntegradorModelGenerator } from './Integrador';
-import { ContratoServicoEspecificoModelGenerator } from './ContratoServicoEspecifico';
-import { FornecedorModelGenerator } from './Fornecedor';
-import { ServicoEspecificoModelGenerator } from './ServicoEspecifico';
 import { TarifacaoModelGenerator } from './Tarifacao';
 
 export let sequelize;
@@ -21,8 +14,8 @@ if (process.env.PORT === undefined) {
   });
 
 } else {
-  sequelize = new Sequelize('e-feelgood', 'kiki', 'bobobobo!1', {
-    host: 'e-feelgood.database.windows.net',
+  sequelize = new Sequelize('e2-feelgood', 'kiki', 'bobobobo!1', {
+    host: 'e2-feelgood.database.windows.net',
     dialect: 'mssql',
     pool: {
       max: 5,
@@ -36,33 +29,10 @@ if (process.env.PORT === undefined) {
 }
 
 
-export const Cliente = ClienteModelGenerator(sequelize);
-export const Contrato = ContratoModelGenerator(sequelize);
-export const ContratoServicoEspecifico = ContratoServicoEspecificoModelGenerator(sequelize);
-export const Fornecedor = FornecedorModelGenerator(sequelize);
-export const Integrador = IntegradorModelGenerator(sequelize);
-export const Service = ServiceModelGenerator(sequelize);
-export const ServicoEspecifico = ServicoEspecificoModelGenerator(sequelize);
 export const Tarifacao = TarifacaoModelGenerator(sequelize);
 
-Contrato.belongsTo(Service);
-Contrato.belongsTo(Cliente);
-Service.hasMany(Contrato);
-Cliente.hasMany(Contrato);
-
-Service.belongsTo(Integrador);
-Integrador.hasMany(Service);
-
-ContratoServicoEspecifico.belongsTo(Integrador);
-ContratoServicoEspecifico.belongsTo(ServicoEspecifico);
-ServicoEspecifico.hasMany(ContratoServicoEspecifico);
-Integrador.hasMany(ContratoServicoEspecifico);
-
-ServicoEspecifico.belongsTo(Fornecedor);
-Fornecedor.hasMany(ServicoEspecifico);
-
 if (process.env.PORT === undefined) {
-  sequelize.sync({ force: true }).then(async () => {});
+  sequelize.sync({ force: false }).then(async () => { });
 } else {
   sequelize.sync({ force: false }).then(async () => {
     // let cliente = await Cliente.create({cpf: "391.854.828-70"});

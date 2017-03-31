@@ -1,0 +1,37 @@
+extends layout
+
+block content
+    section(class="featured")
+      div(class="content-wrapper")
+          hgroup(class="title")
+              h1 Gerência
+              h3(style="color: white") Módulo de Supervisão dos serviços dos Clientes, Integradores e Fornecedores
+
+    if gerente
+
+        section(class="main-content")
+            .card
+                .card-block
+                    h1.card-title Contratos específicos
+                    each contrato in contratos
+                        .card
+                            .card-block
+                                h3=`Serviço específico: ${contrato.servicoEspecifico.nome} de ${contrato.servicoEspecifico.fornecedor}`
+                                br
+                                h3=`Integrador: ${contrato.integrador}`
+                                br
+                                h3=`Estado atual: ${contrato.estado}`
+                                br
+                                h3 Estados
+                                    table.table
+                                        each estado in contrato.cronograma
+                                            tr
+                                                td=estado
+                                h3 Gastos
+                                    table.table
+                                        each gasto in contrato.gastos
+                                            tr
+                                                td=gasto.nome
+                                                td=gasto.valor
+
+        

@@ -19,29 +19,8 @@ module.exports = function (app) {
     return __awaiter(this, void 0, void 0, function* () {
         app.get("/tarifacao", (req, res) => __awaiter(this, void 0, void 0, function* () {
             let tarifacoes = yield Database_1.Tarifacao.findAll();
-            for (let i = 0; i < tarifacoes.length; i++) {
-                let t = tarifacoes[i];
-                let cliente = yield Database_1.Cliente.find({ where: { cpf: t.identificador } });
-                let numerosDeLinhasNoBanco = 1;
-                if (cliente) {
-                    numerosDeLinhasNoBanco += yield Database_1.Contrato.count({ where: { ClienteId: cliente.id } });
-                }
-                else {
-                    let integrador = yield Database_1.Integrador.find({ where: { cnpj: t.identificador } });
-                    if (integrador) {
-                        numerosDeLinhasNoBanco += yield Database_1.Service.count({ where: { IntegradorId: integrador.id } });
-                        numerosDeLinhasNoBanco += yield Database_1.ContratoServicoEspecifico.count({ where: { IntegradorId: integrador.id } });
-                    }
-                    else {
-                        let fornecedor = yield Database_1.Fornecedor.find({ where: { cnpj: t.identificador } });
-                        numerosDeLinhasNoBanco += yield Database_1.ServicoEspecifico.count({ where: { FornecedorId: fornecedor.id } });
-                    }
-                }
-                t.numerosDeLinhasNoBanco = numerosDeLinhasNoBanco;
-            }
             tarifacoes.forEach((tarifacao) => tarifacao.valor =
-                tarifacao.tempo * AZURE_RATING * (1 + MARK_UP / 100) +
-                    tarifacao.numerosDeLinhasNoBanco * 200 * AZURE_DATA_RATING * (1 + MARK_UP / 100));
+                tarifacao.tempo * AZURE_RATING * (1 + MARK_UP / 100));
             res.render('tarifacao', {
                 title: 'Home', user: req["user"], tarifacoes,
                 searchRoute: "/"

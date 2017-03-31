@@ -4,49 +4,58 @@ block content
     section(class="featured")
       div(class="content-wrapper")
           hgroup(class="title")
-              h1 FeelGood
-              h2 O buscador de serviços que você mais precisa
+              h1 Gerência
+              h3(style="color: white") Módulo de Supervisão dos serviços dos Clientes, Integradores e Fornecedores
 
-    section(class="main-content")
-      ul#myTab.nav.nav-tabs(role='tablist')
-        li.nav-item
-            a.nav-link.active(data-toggle='tab', href='#search', role='tab', aria-controls='search') Procurar serviços
-        li.nav-item
-            a.contratosTab.nav-link(data-toggle='tab', href='#contracts', role='tab', aria-controls='contracts') Ver contratos
-      .tab-content
-        #search.tab-pane.fade.show.active(role='tabpanel' style="margin-top: 1rem")
-            h3 Busque um serviço
-                form(action=searchRoute method="POST")
-                    .form-group(style="margin-right: 10")
-                        input.form-control(type='text', name='serviceName')
-                    button.btn.btn-primary(type="submit") Buscar
-                if services
-                    .row
-                        each service in services
-                            .col-md-12.col-lg-6
-                                .card(style="margin-top: 1rem; margin-right: 1rem")
-                                    .card-block
-                                        h4.card-title=service.name
-                                        p.card-text
-                                            =service.description
-                                            |  
-                                        a.negociar.btn.btn-primary(href=service.contractRoute) Negociar
-        #contracts.tab-pane.fade(role='tabpanel' style="margin-top: 1rem")
-            .row
-                each contrato in contratos
-                    .col-md-12.col-lg-6
-                        .card(style="margin-top: 1rem; margin-right: 1rem")
-                            .card-block
-                                h4.card-title Código #{contrato.id}: #{contrato.Service.name}
-                                p.card-text
-                                    =contrato.Service.description
-                                    |  
-                                a.cronograma.btn.btn-primary(href=contrato.url) Cronograma
+    if gerente
 
-    script.
-        $(function () {
-        $('#myTab a:first').tab('show')
-        })
+        section(class="main-content")
+            .card
+                .card-block
+                    h3.card-title Clientes
+                    .card-text
+                        table.table.table-striped
+                            tr
+                                th CPF
+                                th Ações
+                            each cliente in clientes
+                                tr
+                                    td=cliente.cpf
+                                    td
+                                        a(href=`/contratos?type=cliente&cpf=${cliente.cpf}`) Ver contratos
+            .card
+                .card-block
+                    h3.card-title Integradores
+                    .card-text
+                        table.table.table-striped
+                            tr
+                                th CNPJ
+                                th Ações
+                            each integrador in integradores
+                                tr
+                                    td=integrador.cnpj
+                                    td
+                                        a(href=`/contratos?type=integrador&cnpj=${integrador.cnpj}` style="margin-right: 18px") Ver contratos
+                                        a(href=`/contratos-especificos?type=integrador&cnpj=${integrador.cnpj}`) Ver contratos de Serviço Específico
+        
+            .card
+                .card-block
+                    h3.card-title Fornecedores
+                    .card-text
+                        table.table.table-striped
+                            tr
+                                th CNPJ
+                                th Ações
+                            each fornecedor in fornecedores
+                                tr
+                                    td=fornecedor.cnpj
+                                    td
+                                        a(href=`/contratos-especificos?type=fornecedor&cnpj=${fornecedor.cnpj}`) Ver contratos
+                        
+        script.
+            $(function () {
+            $('#myTab a:first').tab('show')
+            })
       
 
         
