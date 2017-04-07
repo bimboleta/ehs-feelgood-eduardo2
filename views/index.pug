@@ -10,7 +10,7 @@ block content
     if gerente
 
         section(class="main-content")
-            .card
+            .card#clientes
                 .card-block
                     h3.card-title Clientes
                     .card-text
@@ -23,7 +23,7 @@ block content
                                     td=cliente.cpf
                                     td
                                         a(href=`/contratos?type=cliente&cpf=${cliente.cpf}`) Ver contratos
-            .card
+            .card#integradores
                 .card-block
                     h3.card-title Integradores
                     .card-text
@@ -38,7 +38,7 @@ block content
                                         a(href=`/contratos?type=integrador&cnpj=${integrador.cnpj}` style="margin-right: 18px") Ver contratos
                                         a(href=`/contratos-especificos?type=integrador&cnpj=${integrador.cnpj}`) Ver contratos de Serviço Específico
         
-            .card
+            .card#fornecedores
                 .card-block
                     h3.card-title Fornecedores
                     .card-text

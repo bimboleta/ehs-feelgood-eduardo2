@@ -16,9 +16,11 @@ block content
                     each contrato in contratos
                         .card
                             .card-block
-                                h3=`Serviço específico: ${contrato.servicoEspecifico.nome} de ${contrato.servicoEspecifico.fornecedor}`
+                                h3=`Serviço específico: ${contrato.servicoEspecifico.nome}`
                                 br
                                 h3=`Integrador: ${contrato.integrador}`
+                                br
+                                h3=`Fornecedor: ${contrato.servicoEspecifico.fornecedor}`
                                 br
                                 h3=`Estado atual: ${contrato.estado}`
                                 br
