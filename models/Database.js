@@ -37,7 +37,7 @@ else {
 }
 exports.Tarifacao = Tarifacao_1.TarifacaoModelGenerator(exports.sequelize);
 if (process.env.PORT === undefined) {
-    exports.sequelize.sync({ force: false }).then(() => __awaiter(this, void 0, void 0, function* () { }));
+    exports.sequelize.drop().then(() => exports.sequelize.sync({ force: true }).then(() => __awaiter(this, void 0, void 0, function* () { })));
 }
 else {
     exports.sequelize.sync({ force: false }).then(() => __awaiter(this, void 0, void 0, function* () {

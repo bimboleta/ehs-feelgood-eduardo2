@@ -32,7 +32,7 @@ if (process.env.PORT === undefined) {
 export const Tarifacao = TarifacaoModelGenerator(sequelize);
 
 if (process.env.PORT === undefined) {
-  sequelize.sync({ force: false }).then(async () => { });
+  sequelize.drop().then(() => sequelize.sync({ force: true }).then(async () => { }));
 } else {
   sequelize.sync({ force: false }).then(async () => {
     // let cliente = await Cliente.create({cpf: "391.854.828-70"});

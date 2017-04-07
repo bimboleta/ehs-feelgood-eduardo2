@@ -1,377 +1,87 @@
-19:44:31.569 INFO - Launching a standalone server
-19:44:31.609 INFO - Java: Oracle Corporation 25.121-b13
-19:44:31.609 INFO - OS: Mac OS X 10.12.3 x86_64
-19:44:31.618 INFO - v2.44.0, with Core v2.44.0. Built from revision 76d78cf
-19:44:31.686 INFO - Default driver org.openqa.selenium.ie.InternetExplorerDriver registration is skipped: registration capabilities Capabilities [{ensureCleanSession=true, browserName=internet explorer, version=, platform=WINDOWS}] does not match with current platform: MAC
-19:44:31.712 INFO - RemoteWebDriver instances should connect to: http://127.0.0.1:4444/wd/hub
-19:44:31.713 INFO - Version Jetty/5.1.x
-19:44:31.714 INFO - Started HttpContext[/selenium-server,/selenium-server]
-19:44:31.739 INFO - Started org.openqa.jetty.jetty.servlet.ServletHandler@725bef66
-19:44:31.739 INFO - Started HttpContext[/wd,/wd]
-19:44:31.739 INFO - Started HttpContext[/selenium-server/driver,/selenium-server/driver]
-19:44:31.739 INFO - Started HttpContext[/,/]
-19:44:31.743 INFO - Started SocketListener on 0.0.0.0:4444
-19:44:31.743 INFO - Started org.openqa.jetty.jetty.Server@30dae81
-19:44:31.979 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
-19:44:31.986 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
-Starting ChromeDriver 2.28.455517 (2c6d2707d8ea850c862f04ac066724273981e88f) on port 37283
+09:05:58.308 INFO - Launching a standalone server
+09:05:58.348 INFO - Java: Oracle Corporation 25.121-b13
+09:05:58.348 INFO - OS: Mac OS X 10.12.3 x86_64
+09:05:58.357 INFO - v2.44.0, with Core v2.44.0. Built from revision 76d78cf
+09:05:58.432 INFO - Default driver org.openqa.selenium.ie.InternetExplorerDriver registration is skipped: registration capabilities Capabilities [{ensureCleanSession=true, browserName=internet explorer, version=, platform=WINDOWS}] does not match with current platform: MAC
+09:05:58.462 INFO - RemoteWebDriver instances should connect to: http://127.0.0.1:4444/wd/hub
+09:05:58.463 INFO - Version Jetty/5.1.x
+09:05:58.464 INFO - Started HttpContext[/selenium-server,/selenium-server]
+09:05:58.485 INFO - Started org.openqa.jetty.jetty.servlet.ServletHandler@725bef66
+09:05:58.485 INFO - Started HttpContext[/wd,/wd]
+09:05:58.485 INFO - Started HttpContext[/selenium-server/driver,/selenium-server/driver]
+09:05:58.486 INFO - Started HttpContext[/,/]
+09:05:58.490 INFO - Started SocketListener on 0.0.0.0:4444
+09:05:58.490 INFO - Started org.openqa.jetty.jetty.Server@30dae81
+09:05:58.718 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+09:05:58.725 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.28.455517 (2c6d2707d8ea850c862f04ac066724273981e88f) on port 33799
 Only local connections are allowed.
-19:44:33.548 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
-19:44:33.560 INFO - Executing: [get: http://localhost:3000/tarifacao])
-19:44:36.958 INFO - Done: [get: http://localhost:3000/tarifacao]
-19:44:36.964 INFO - Executing: [find elements: By.selector: body])
-19:44:37.009 INFO - Done: [find elements: By.selector: body]
-19:44:37.014 INFO - Executing: [get text: 0 [[ChromeDriver: chrome on MAC (463b879c8192dd135acfc6a39ce34e2a)] -> css selector: body]])
-19:44:37.055 INFO - Done: [get text: 0 [[ChromeDriver: chrome on MAC (463b879c8192dd135acfc6a39ce34e2a)] -> css selector: body]]
-19:44:37.061 INFO - Executing: [find elements: By.selector: body])
-19:44:37.072 INFO - Done: [find elements: By.selector: body]
-19:44:37.075 INFO - Executing: [get text: 0 [[ChromeDriver: chrome on MAC (463b879c8192dd135acfc6a39ce34e2a)] -> css selector: body]])
-19:44:37.089 INFO - Done: [get text: 0 [[ChromeDriver: chrome on MAC (463b879c8192dd135acfc6a39ce34e2a)] -> css selector: body]]
-19:44:37.094 INFO - Executing: [find elements: By.selector: body])
-19:44:37.105 INFO - Done: [find elements: By.selector: body]
-19:44:37.109 INFO - Executing: [get text: 0 [[ChromeDriver: chrome on MAC (463b879c8192dd135acfc6a39ce34e2a)] -> css selector: body]])
-19:44:37.127 INFO - Done: [get text: 0 [[ChromeDriver: chrome on MAC (463b879c8192dd135acfc6a39ce34e2a)] -> css selector: body]]
-19:44:37.131 INFO - Executing: [delete session: 7e4050f0-768b-4868-a0ee-ab10491f9449])
-19:44:37.699 INFO - Done: [delete session: 7e4050f0-768b-4868-a0ee-ab10491f9449]
-19:44:37.714 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
-19:44:37.716 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
-Starting ChromeDriver 2.28.455517 (2c6d2707d8ea850c862f04ac066724273981e88f) on port 9897
+09:06:00.234 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+09:06:00.245 INFO - Executing: [get: http://localhost:3000/tarifacao])
+09:06:02.760 INFO - Done: [get: http://localhost:3000/tarifacao]
+09:06:02.768 INFO - Executing: [find elements: By.selector: body])
+09:06:02.803 INFO - Done: [find elements: By.selector: body]
+09:06:02.810 INFO - Executing: [get text: 0 [[ChromeDriver: chrome on MAC (14727c91b69d5f25bf41d5df4673f433)] -> css selector: body]])
+09:06:02.848 INFO - Done: [get text: 0 [[ChromeDriver: chrome on MAC (14727c91b69d5f25bf41d5df4673f433)] -> css selector: body]]
+09:06:02.853 INFO - Executing: [delete session: 22bfa876-ef23-4fa5-951e-34a72c9666cf])
+09:06:03.425 INFO - Done: [delete session: 22bfa876-ef23-4fa5-951e-34a72c9666cf]
+09:06:03.436 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+09:06:03.437 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.28.455517 (2c6d2707d8ea850c862f04ac066724273981e88f) on port 24626
 Only local connections are allowed.
-19:44:38.999 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
-19:44:39.005 INFO - Executing: [get: http://localhost:3000])
-19:44:43.095 INFO - Done: [get: http://localhost:3000]
-19:44:43.101 INFO - Executing: [find elements: By.selector: body])
-19:44:43.133 INFO - Done: [find elements: By.selector: body]
-19:44:43.138 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (0019529a5cb2e2671fb9ee5f9f7c5633)] -> css selector: body]])
-19:44:43.159 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (0019529a5cb2e2671fb9ee5f9f7c5633)] -> css selector: body]]
-19:44:43.163 INFO - Executing: [delete session: 19e33fb8-ce44-4a7a-9989-b87a2ff8b470])
-19:44:43.729 INFO - Done: [delete session: 19e33fb8-ce44-4a7a-9989-b87a2ff8b470]
-19:44:43.744 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
-19:44:43.745 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
-Starting ChromeDriver 2.28.455517 (2c6d2707d8ea850c862f04ac066724273981e88f) on port 17821
+09:06:04.640 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+09:06:04.646 INFO - Executing: [get: http://localhost:3000])
+09:06:08.443 INFO - Done: [get: http://localhost:3000]
+09:06:08.453 INFO - Executing: [find elements: By.selector: body])
+09:06:08.475 INFO - Done: [find elements: By.selector: body]
+09:06:08.479 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (211c4fa0df0724e79dd1c84d95706706)] -> css selector: body]])
+09:06:08.499 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (211c4fa0df0724e79dd1c84d95706706)] -> css selector: body]]
+09:06:08.504 INFO - Executing: [delete session: 7daac78a-f409-48cf-a149-6219e7bb696f])
+09:06:09.074 INFO - Done: [delete session: 7daac78a-f409-48cf-a149-6219e7bb696f]
+09:06:09.084 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+09:06:09.085 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.28.455517 (2c6d2707d8ea850c862f04ac066724273981e88f) on port 6835
 Only local connections are allowed.
-19:44:45.003 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
-19:44:45.008 INFO - Executing: [get: http://localhost:3000/loginIntegrador])
-19:44:50.471 INFO - Done: [get: http://localhost:3000/loginIntegrador]
-19:44:50.476 INFO - Executing: [find element: By.selector: input[name=serviceName]])
-19:44:50.580 INFO - Done: [find element: By.selector: input[name=serviceName]]
-19:44:50.585 INFO - Executing: [send keys: 0 [[ChromeDriver: chrome on MAC (411c81679c8c178787c58f846dbb8517)] -> css selector: input[name=serviceName]], [S, e, r, v, i, ç, o,  , d, e,  , p, a, r, e, d, e]])
-19:44:50.698 INFO - Done: [send keys: 0 [[ChromeDriver: chrome on MAC (411c81679c8c178787c58f846dbb8517)] -> css selector: input[name=serviceName]], [S, e, r, v, i, ç, o,  , d, e,  , p, a, r, e, d, e]]
-19:44:50.702 INFO - Executing: [find element: By.selector: input[name=serviceDescription]])
-19:44:50.721 INFO - Done: [find element: By.selector: input[name=serviceDescription]]
-19:44:50.724 INFO - Executing: [send keys: 1 [[ChromeDriver: chrome on MAC (411c81679c8c178787c58f846dbb8517)] -> css selector: input[name=serviceDescription]], [A, r, r, u, m, a,  , f, u, r, o, s,  , e,  , i, n, f, i, l, t, r, a, ç, õ, e, s]])
-19:44:50.829 INFO - Done: [send keys: 1 [[ChromeDriver: chrome on MAC (411c81679c8c178787c58f846dbb8517)] -> css selector: input[name=serviceDescription]], [A, r, r, u, m, a,  , f, u, r, o, s,  , e,  , i, n, f, i, l, t, r, a, ç, õ, e, s]]
-19:44:50.832 INFO - Executing: [find element: By.selector: form button])
-19:44:50.850 INFO - Done: [find element: By.selector: form button]
-19:44:50.855 INFO - Executing: [click: 2 [[ChromeDriver: chrome on MAC (411c81679c8c178787c58f846dbb8517)] -> css selector: form button]])
-19:44:51.095 INFO - Done: [click: 2 [[ChromeDriver: chrome on MAC (411c81679c8c178787c58f846dbb8517)] -> css selector: form button]]
-19:44:51.209 INFO - Executing: [find element: By.selector: body])
-19:44:51.234 INFO - Done: [find element: By.selector: body]
-19:44:51.239 INFO - Executing: [get text: 3 [[ChromeDriver: chrome on MAC (411c81679c8c178787c58f846dbb8517)] -> css selector: body]])
-19:44:51.272 INFO - Done: [get text: 3 [[ChromeDriver: chrome on MAC (411c81679c8c178787c58f846dbb8517)] -> css selector: body]]
-19:44:51.276 INFO - Executing: [find element: By.selector: a.btn.btn-danger])
-19:44:51.294 INFO - Done: [find element: By.selector: a.btn.btn-danger]
-19:44:51.296 INFO - Executing: [click: 4 [[ChromeDriver: chrome on MAC (411c81679c8c178787c58f846dbb8517)] -> css selector: a.btn.btn-danger]])
-19:44:51.513 INFO - Done: [click: 4 [[ChromeDriver: chrome on MAC (411c81679c8c178787c58f846dbb8517)] -> css selector: a.btn.btn-danger]]
-19:44:51.622 INFO - Executing: [find elements: By.selector: body])
-19:44:51.643 INFO - Done: [find elements: By.selector: body]
-19:44:51.646 INFO - Executing: [get text: 5 [[ChromeDriver: chrome on MAC (411c81679c8c178787c58f846dbb8517)] -> css selector: body]])
-19:44:51.672 INFO - Done: [get text: 5 [[ChromeDriver: chrome on MAC (411c81679c8c178787c58f846dbb8517)] -> css selector: body]]
-19:44:51.675 INFO - Executing: [find element: By.selector: input[name=serviceName]])
-19:44:51.683 INFO - Done: [find element: By.selector: input[name=serviceName]]
-19:44:51.688 INFO - Executing: [send keys: 6 [[ChromeDriver: chrome on MAC (411c81679c8c178787c58f846dbb8517)] -> css selector: input[name=serviceName]], [S, e, r, v, i, ç, o,  , d, e,  , p, a, r, e, d, e]])
-19:44:51.778 INFO - Done: [send keys: 6 [[ChromeDriver: chrome on MAC (411c81679c8c178787c58f846dbb8517)] -> css selector: input[name=serviceName]], [S, e, r, v, i, ç, o,  , d, e,  , p, a, r, e, d, e]]
-19:44:51.781 INFO - Executing: [find element: By.selector: input[name=serviceDescription]])
-19:44:51.791 INFO - Done: [find element: By.selector: input[name=serviceDescription]]
-19:44:51.794 INFO - Executing: [send keys: 7 [[ChromeDriver: chrome on MAC (411c81679c8c178787c58f846dbb8517)] -> css selector: input[name=serviceDescription]], [A, r, r, u, m, a,  , f, u, r, o, s,  , e,  , i, n, f, i, l, t, r, a, ç, õ, e, s]])
-19:44:51.897 INFO - Done: [send keys: 7 [[ChromeDriver: chrome on MAC (411c81679c8c178787c58f846dbb8517)] -> css selector: input[name=serviceDescription]], [A, r, r, u, m, a,  , f, u, r, o, s,  , e,  , i, n, f, i, l, t, r, a, ç, õ, e, s]]
-19:44:51.900 INFO - Executing: [find element: By.selector: form button])
-19:44:51.909 INFO - Done: [find element: By.selector: form button]
-19:44:51.911 INFO - Executing: [click: 8 [[ChromeDriver: chrome on MAC (411c81679c8c178787c58f846dbb8517)] -> css selector: form button]])
-19:44:52.096 INFO - Done: [click: 8 [[ChromeDriver: chrome on MAC (411c81679c8c178787c58f846dbb8517)] -> css selector: form button]]
-19:44:52.206 INFO - Executing: [find element: By.selector: body])
-19:44:52.218 INFO - Done: [find element: By.selector: body]
-19:44:52.220 INFO - Executing: [get text: 9 [[ChromeDriver: chrome on MAC (411c81679c8c178787c58f846dbb8517)] -> css selector: body]])
-19:44:52.249 INFO - Done: [get text: 9 [[ChromeDriver: chrome on MAC (411c81679c8c178787c58f846dbb8517)] -> css selector: body]]
-19:44:52.252 INFO - Executing: [delete session: d2292992-8bc1-45d1-9135-60e21dd9dcbe])
-19:44:52.820 INFO - Done: [delete session: d2292992-8bc1-45d1-9135-60e21dd9dcbe]
-19:44:52.829 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
-19:44:52.830 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
-Starting ChromeDriver 2.28.455517 (2c6d2707d8ea850c862f04ac066724273981e88f) on port 38934
+09:06:10.291 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+09:06:10.296 INFO - Executing: [get: http://localhost:3000])
+09:06:11.297 INFO - Done: [get: http://localhost:3000]
+09:06:11.302 INFO - Executing: [find elements: By.selector: body])
+09:06:11.325 INFO - Done: [find elements: By.selector: body]
+09:06:11.329 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (f5cc7ed93742d5c3ed3e6d429bcbfe44)] -> css selector: body]])
+09:06:11.350 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (f5cc7ed93742d5c3ed3e6d429bcbfe44)] -> css selector: body]]
+09:06:11.354 INFO - Executing: [find elements: By.selector: body])
+09:06:11.363 INFO - Done: [find elements: By.selector: body]
+09:06:11.366 INFO - Executing: [get text: 0 [[ChromeDriver: chrome on MAC (f5cc7ed93742d5c3ed3e6d429bcbfe44)] -> css selector: body]])
+09:06:11.397 INFO - Done: [get text: 0 [[ChromeDriver: chrome on MAC (f5cc7ed93742d5c3ed3e6d429bcbfe44)] -> css selector: body]]
+09:06:11.402 INFO - Executing: [delete session: 4be185aa-13c9-4239-ad07-4569191bd407])
+09:06:11.971 INFO - Done: [delete session: 4be185aa-13c9-4239-ad07-4569191bd407]
+09:06:11.979 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+09:06:11.981 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.28.455517 (2c6d2707d8ea850c862f04ac066724273981e88f) on port 30290
 Only local connections are allowed.
-19:44:54.130 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
-19:44:54.134 INFO - Executing: [get: http://localhost:3000/loginCliente])
-19:44:57.465 INFO - Done: [get: http://localhost:3000/loginCliente]
-19:44:57.470 INFO - Executing: [find element: By.selector: input[name=serviceName]])
-19:44:57.495 INFO - Done: [find element: By.selector: input[name=serviceName]]
-19:44:57.499 INFO - Executing: [send keys: 0 [[ChromeDriver: chrome on MAC (fbb5fd9dd3792f1d2ba7b823f103a0f0)] -> css selector: input[name=serviceName]], [p, a, r, e, d, e]])
-19:44:57.589 INFO - Done: [send keys: 0 [[ChromeDriver: chrome on MAC (fbb5fd9dd3792f1d2ba7b823f103a0f0)] -> css selector: input[name=serviceName]], [p, a, r, e, d, e]]
-19:44:57.595 INFO - Executing: [find element: By.selector: form button])
-19:44:57.619 INFO - Done: [find element: By.selector: form button]
-19:44:57.622 INFO - Executing: [click: 1 [[ChromeDriver: chrome on MAC (fbb5fd9dd3792f1d2ba7b823f103a0f0)] -> css selector: form button]])
-19:44:57.828 INFO - Done: [click: 1 [[ChromeDriver: chrome on MAC (fbb5fd9dd3792f1d2ba7b823f103a0f0)] -> css selector: form button]]
-19:44:57.939 INFO - Executing: [find element: By.selector: body])
-19:44:57.965 INFO - Done: [find element: By.selector: body]
-19:44:57.969 INFO - Executing: [get text: 2 [[ChromeDriver: chrome on MAC (fbb5fd9dd3792f1d2ba7b823f103a0f0)] -> css selector: body]])
-19:44:58.001 INFO - Done: [get text: 2 [[ChromeDriver: chrome on MAC (fbb5fd9dd3792f1d2ba7b823f103a0f0)] -> css selector: body]]
-19:44:58.005 INFO - Executing: [find element: By.selector: a.negociar])
-19:44:58.025 INFO - Done: [find element: By.selector: a.negociar]
-19:44:58.028 INFO - Executing: [click: 3 [[ChromeDriver: chrome on MAC (fbb5fd9dd3792f1d2ba7b823f103a0f0)] -> css selector: a.negociar]])
-19:44:58.217 INFO - Done: [click: 3 [[ChromeDriver: chrome on MAC (fbb5fd9dd3792f1d2ba7b823f103a0f0)] -> css selector: a.negociar]]
-19:44:58.423 INFO - Executing: [find element: By.selector: a.contratosTab])
-19:44:58.452 INFO - Done: [find element: By.selector: a.contratosTab]
-19:44:58.455 INFO - Executing: [click: 4 [[ChromeDriver: chrome on MAC (fbb5fd9dd3792f1d2ba7b823f103a0f0)] -> css selector: a.contratosTab]])
-19:44:58.515 INFO - Done: [click: 4 [[ChromeDriver: chrome on MAC (fbb5fd9dd3792f1d2ba7b823f103a0f0)] -> css selector: a.contratosTab]]
-19:44:58.722 INFO - Executing: [find element: By.selector: body])
-19:44:58.732 INFO - Done: [find element: By.selector: body]
-19:44:58.735 INFO - Executing: [get text: 5 [[ChromeDriver: chrome on MAC (fbb5fd9dd3792f1d2ba7b823f103a0f0)] -> css selector: body]])
-19:44:58.773 INFO - Done: [get text: 5 [[ChromeDriver: chrome on MAC (fbb5fd9dd3792f1d2ba7b823f103a0f0)] -> css selector: body]]
-19:44:58.776 INFO - Executing: [delete session: 51e29e09-85d7-427f-a382-34303e5e7c35])
-19:44:59.338 INFO - Done: [delete session: 51e29e09-85d7-427f-a382-34303e5e7c35]
-19:44:59.350 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
-19:44:59.352 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
-Starting ChromeDriver 2.28.455517 (2c6d2707d8ea850c862f04ac066724273981e88f) on port 1477
+09:06:13.182 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+09:06:13.187 INFO - Executing: [get: http://localhost:3000/loginGerente])
+09:06:14.229 INFO - Done: [get: http://localhost:3000/loginGerente]
+09:06:14.233 INFO - Executing: [find elements: By.selector: body])
+09:06:14.256 INFO - Done: [find elements: By.selector: body]
+09:06:14.259 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (07cb6405af7381a2faee1e38d965bd71)] -> css selector: body]])
+09:06:14.278 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (07cb6405af7381a2faee1e38d965bd71)] -> css selector: body]]
+09:06:14.283 INFO - Executing: [find elements: By.selector: body])
+09:06:14.292 INFO - Done: [find elements: By.selector: body]
+09:06:14.297 INFO - Executing: [get text: 0 [[ChromeDriver: chrome on MAC (07cb6405af7381a2faee1e38d965bd71)] -> css selector: body]])
+09:06:14.354 INFO - Done: [get text: 0 [[ChromeDriver: chrome on MAC (07cb6405af7381a2faee1e38d965bd71)] -> css selector: body]]
+09:06:14.360 INFO - Executing: [delete session: 6d30bfa7-6ee8-4130-9851-cbec7da4d1cb])
+09:06:14.931 INFO - Done: [delete session: 6d30bfa7-6ee8-4130-9851-cbec7da4d1cb]
+09:06:14.939 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+09:06:14.941 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.28.455517 (2c6d2707d8ea850c862f04ac066724273981e88f) on port 1171
 Only local connections are allowed.
-19:45:00.633 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
-19:45:00.642 INFO - Executing: [get: http://localhost:3000/loginIntegrador])
-19:45:05.226 INFO - Done: [get: http://localhost:3000/loginIntegrador]
-19:45:05.229 INFO - Executing: [find element: By.selector: a.contratosTab])
-19:45:05.339 INFO - Done: [find element: By.selector: a.contratosTab]
-19:45:05.341 INFO - Executing: [click: 0 [[ChromeDriver: chrome on MAC (cd9aa2e3bb1c44d517cdc2ad58244b4c)] -> css selector: a.contratosTab]])
-19:45:05.388 INFO - Done: [click: 0 [[ChromeDriver: chrome on MAC (cd9aa2e3bb1c44d517cdc2ad58244b4c)] -> css selector: a.contratosTab]]
-19:45:05.597 INFO - Executing: [find element: By.selector: a.cronograma])
-19:45:05.623 INFO - Done: [find element: By.selector: a.cronograma]
-19:45:05.625 INFO - Executing: [click: 1 [[ChromeDriver: chrome on MAC (cd9aa2e3bb1c44d517cdc2ad58244b4c)] -> css selector: a.cronograma]])
-19:45:05.828 INFO - Done: [click: 1 [[ChromeDriver: chrome on MAC (cd9aa2e3bb1c44d517cdc2ad58244b4c)] -> css selector: a.cronograma]]
-19:45:06.040 INFO - Executing: [find element: By.selector: input[name=estado]])
-19:45:06.062 INFO - Done: [find element: By.selector: input[name=estado]]
-19:45:06.065 INFO - Executing: [send keys: 2 [[ChromeDriver: chrome on MAC (cd9aa2e3bb1c44d517cdc2ad58244b4c)] -> css selector: input[name=estado]], [C, o, n, s, e, r, t, a, r,  , i, n, f, i, l, t, r, a, c, o, e, s,  , e,  , p, i, n, t, a, r]])
-19:45:06.201 INFO - Done: [send keys: 2 [[ChromeDriver: chrome on MAC (cd9aa2e3bb1c44d517cdc2ad58244b4c)] -> css selector: input[name=estado]], [C, o, n, s, e, r, t, a, r,  , i, n, f, i, l, t, r, a, c, o, e, s,  , e,  , p, i, n, t, a, r]]
-19:45:06.204 INFO - Executing: [find element: By.selector: button.adicionar-estado])
-19:45:06.221 INFO - Done: [find element: By.selector: button.adicionar-estado]
-19:45:06.224 INFO - Executing: [click: 3 [[ChromeDriver: chrome on MAC (cd9aa2e3bb1c44d517cdc2ad58244b4c)] -> css selector: button.adicionar-estado]])
-19:45:06.414 INFO - Done: [click: 3 [[ChromeDriver: chrome on MAC (cd9aa2e3bb1c44d517cdc2ad58244b4c)] -> css selector: button.adicionar-estado]]
-19:45:06.623 INFO - Executing: [find element: By.selector: input[name=name]])
-19:45:06.645 INFO - Done: [find element: By.selector: input[name=name]]
-19:45:06.649 INFO - Executing: [send keys: 4 [[ChromeDriver: chrome on MAC (cd9aa2e3bb1c44d517cdc2ad58244b4c)] -> css selector: input[name=name]], [T, i, n, t, a]])
-19:45:06.708 INFO - Done: [send keys: 4 [[ChromeDriver: chrome on MAC (cd9aa2e3bb1c44d517cdc2ad58244b4c)] -> css selector: input[name=name]], [T, i, n, t, a]]
-19:45:06.711 INFO - Executing: [find element: By.selector: input[name=value]])
-19:45:06.729 INFO - Done: [find element: By.selector: input[name=value]]
-19:45:06.733 INFO - Executing: [send keys: 5 [[ChromeDriver: chrome on MAC (cd9aa2e3bb1c44d517cdc2ad58244b4c)] -> css selector: input[name=value]], [R, $,  , 4, 0, 0, ,, 0, 0]])
-19:45:06.801 INFO - Done: [send keys: 5 [[ChromeDriver: chrome on MAC (cd9aa2e3bb1c44d517cdc2ad58244b4c)] -> css selector: input[name=value]], [R, $,  , 4, 0, 0, ,, 0, 0]]
-19:45:06.804 INFO - Executing: [find element: By.selector: button.adicionar-gasto])
-19:45:06.825 INFO - Done: [find element: By.selector: button.adicionar-gasto]
-19:45:06.827 INFO - Executing: [click: 6 [[ChromeDriver: chrome on MAC (cd9aa2e3bb1c44d517cdc2ad58244b4c)] -> css selector: button.adicionar-gasto]])
-19:45:07.026 INFO - Done: [click: 6 [[ChromeDriver: chrome on MAC (cd9aa2e3bb1c44d517cdc2ad58244b4c)] -> css selector: button.adicionar-gasto]]
-19:45:07.236 INFO - Executing: [find element: By.selector: body])
-19:45:07.262 INFO - Done: [find element: By.selector: body]
-19:45:07.264 INFO - Executing: [get text: 7 [[ChromeDriver: chrome on MAC (cd9aa2e3bb1c44d517cdc2ad58244b4c)] -> css selector: body]])
-19:45:07.299 INFO - Done: [get text: 7 [[ChromeDriver: chrome on MAC (cd9aa2e3bb1c44d517cdc2ad58244b4c)] -> css selector: body]]
-19:45:07.302 INFO - Executing: [find element: By.selector: body])
-19:45:07.310 INFO - Done: [find element: By.selector: body]
-19:45:07.312 INFO - Executing: [get text: 7 [[ChromeDriver: chrome on MAC (cd9aa2e3bb1c44d517cdc2ad58244b4c)] -> css selector: body]])
-19:45:07.330 INFO - Done: [get text: 7 [[ChromeDriver: chrome on MAC (cd9aa2e3bb1c44d517cdc2ad58244b4c)] -> css selector: body]]
-19:45:07.333 INFO - Executing: [delete session: ce065482-790c-4f5b-90ae-e545d47496a8])
-19:45:07.893 INFO - Done: [delete session: ce065482-790c-4f5b-90ae-e545d47496a8]
-19:45:07.901 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
-19:45:07.902 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
-Starting ChromeDriver 2.28.455517 (2c6d2707d8ea850c862f04ac066724273981e88f) on port 31849
-Only local connections are allowed.
-19:45:09.206 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
-19:45:09.212 INFO - Executing: [get: http://localhost:3000/loginCliente])
-19:45:13.401 INFO - Done: [get: http://localhost:3000/loginCliente]
-19:45:13.407 INFO - Executing: [find element: By.selector: a.contratosTab])
-19:45:13.438 INFO - Done: [find element: By.selector: a.contratosTab]
-19:45:13.442 INFO - Executing: [click: 0 [[ChromeDriver: chrome on MAC (529ac146107c1309378797db3adb316a)] -> css selector: a.contratosTab]])
-19:45:13.506 INFO - Done: [click: 0 [[ChromeDriver: chrome on MAC (529ac146107c1309378797db3adb316a)] -> css selector: a.contratosTab]]
-19:45:13.719 INFO - Executing: [find element: By.selector: a.cronograma])
-19:45:13.744 INFO - Done: [find element: By.selector: a.cronograma]
-19:45:13.747 INFO - Executing: [click: 1 [[ChromeDriver: chrome on MAC (529ac146107c1309378797db3adb316a)] -> css selector: a.cronograma]])
-19:45:13.962 INFO - Done: [click: 1 [[ChromeDriver: chrome on MAC (529ac146107c1309378797db3adb316a)] -> css selector: a.cronograma]]
-19:45:14.167 INFO - Executing: [find element: By.selector: body])
-19:45:14.192 INFO - Done: [find element: By.selector: body]
-19:45:14.195 INFO - Executing: [get text: 2 [[ChromeDriver: chrome on MAC (529ac146107c1309378797db3adb316a)] -> css selector: body]])
-19:45:14.228 INFO - Done: [get text: 2 [[ChromeDriver: chrome on MAC (529ac146107c1309378797db3adb316a)] -> css selector: body]]
-19:45:14.231 INFO - Executing: [find element: By.selector: body])
-19:45:14.240 INFO - Done: [find element: By.selector: body]
-19:45:14.242 INFO - Executing: [get text: 2 [[ChromeDriver: chrome on MAC (529ac146107c1309378797db3adb316a)] -> css selector: body]])
-19:45:14.258 INFO - Done: [get text: 2 [[ChromeDriver: chrome on MAC (529ac146107c1309378797db3adb316a)] -> css selector: body]]
-19:45:14.261 INFO - Executing: [delete session: b3fc19d1-5b9e-4aba-aee8-2c046d6d5f2f])
-19:45:14.826 INFO - Done: [delete session: b3fc19d1-5b9e-4aba-aee8-2c046d6d5f2f]
-19:45:14.836 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
-19:45:14.838 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
-Starting ChromeDriver 2.28.455517 (2c6d2707d8ea850c862f04ac066724273981e88f) on port 40955
-Only local connections are allowed.
-19:45:16.100 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
-19:45:16.103 INFO - Executing: [get: http://localhost:3000/loginFornecedor])
-19:45:18.450 INFO - Done: [get: http://localhost:3000/loginFornecedor]
-19:45:18.457 INFO - Executing: [find element: By.selector: input[name=serviceName]])
-19:45:18.477 INFO - Done: [find element: By.selector: input[name=serviceName]]
-19:45:18.479 INFO - Executing: [send keys: 0 [[ChromeDriver: chrome on MAC (e673cfcb4aaa9f8c4a567c0be4d88972)] -> css selector: input[name=serviceName]], [S, e, r, v, i, ç, o,  , d, e,  , p, i, n, t, u, r, a]])
-19:45:18.614 INFO - Done: [send keys: 0 [[ChromeDriver: chrome on MAC (e673cfcb4aaa9f8c4a567c0be4d88972)] -> css selector: input[name=serviceName]], [S, e, r, v, i, ç, o,  , d, e,  , p, i, n, t, u, r, a]]
-19:45:18.616 INFO - Executing: [find element: By.selector: input[name=serviceDescription]])
-19:45:18.634 INFO - Done: [find element: By.selector: input[name=serviceDescription]]
-19:45:18.637 INFO - Executing: [send keys: 1 [[ChromeDriver: chrome on MAC (e673cfcb4aaa9f8c4a567c0be4d88972)] -> css selector: input[name=serviceDescription]], [P, i, n, t, o,  , c, o, m,  , a, s,  , c, o, r, e, s,  , b, r, a, n, c, a, ,,  , a, z, u, l,  , e,  , v, e, r, m, e, l, h, a]])
-19:45:18.779 INFO - Done: [send keys: 1 [[ChromeDriver: chrome on MAC (e673cfcb4aaa9f8c4a567c0be4d88972)] -> css selector: input[name=serviceDescription]], [P, i, n, t, o,  , c, o, m,  , a, s,  , c, o, r, e, s,  , b, r, a, n, c, a, ,,  , a, z, u, l,  , e,  , v, e, r, m, e, l, h, a]]
-19:45:18.782 INFO - Executing: [find element: By.selector: form button])
-19:45:18.799 INFO - Done: [find element: By.selector: form button]
-19:45:18.801 INFO - Executing: [click: 2 [[ChromeDriver: chrome on MAC (e673cfcb4aaa9f8c4a567c0be4d88972)] -> css selector: form button]])
-19:45:18.996 INFO - Done: [click: 2 [[ChromeDriver: chrome on MAC (e673cfcb4aaa9f8c4a567c0be4d88972)] -> css selector: form button]]
-19:45:19.104 INFO - Executing: [find element: By.selector: body])
-19:45:19.132 INFO - Done: [find element: By.selector: body]
-19:45:19.134 INFO - Executing: [get text: 3 [[ChromeDriver: chrome on MAC (e673cfcb4aaa9f8c4a567c0be4d88972)] -> css selector: body]])
-19:45:19.161 INFO - Done: [get text: 3 [[ChromeDriver: chrome on MAC (e673cfcb4aaa9f8c4a567c0be4d88972)] -> css selector: body]]
-19:45:19.164 INFO - Executing: [find element: By.selector: a.btn.btn-danger])
-19:45:19.181 INFO - Done: [find element: By.selector: a.btn.btn-danger]
-19:45:19.183 INFO - Executing: [click: 4 [[ChromeDriver: chrome on MAC (e673cfcb4aaa9f8c4a567c0be4d88972)] -> css selector: a.btn.btn-danger]])
-19:45:19.375 INFO - Done: [click: 4 [[ChromeDriver: chrome on MAC (e673cfcb4aaa9f8c4a567c0be4d88972)] -> css selector: a.btn.btn-danger]]
-19:45:19.481 INFO - Executing: [find elements: By.selector: body])
-19:45:19.507 INFO - Done: [find elements: By.selector: body]
-19:45:19.509 INFO - Executing: [get text: 5 [[ChromeDriver: chrome on MAC (e673cfcb4aaa9f8c4a567c0be4d88972)] -> css selector: body]])
-19:45:19.535 INFO - Done: [get text: 5 [[ChromeDriver: chrome on MAC (e673cfcb4aaa9f8c4a567c0be4d88972)] -> css selector: body]]
-19:45:19.537 INFO - Executing: [find element: By.selector: input[name=serviceName]])
-19:45:19.544 INFO - Done: [find element: By.selector: input[name=serviceName]]
-19:45:19.547 INFO - Executing: [send keys: 6 [[ChromeDriver: chrome on MAC (e673cfcb4aaa9f8c4a567c0be4d88972)] -> css selector: input[name=serviceName]], [S, e, r, v, i, ç, o,  , d, e,  , p, i, n, t, u, r, a]])
-19:45:19.643 INFO - Done: [send keys: 6 [[ChromeDriver: chrome on MAC (e673cfcb4aaa9f8c4a567c0be4d88972)] -> css selector: input[name=serviceName]], [S, e, r, v, i, ç, o,  , d, e,  , p, i, n, t, u, r, a]]
-19:45:19.645 INFO - Executing: [find element: By.selector: input[name=serviceDescription]])
-19:45:19.653 INFO - Done: [find element: By.selector: input[name=serviceDescription]]
-19:45:19.656 INFO - Executing: [send keys: 7 [[ChromeDriver: chrome on MAC (e673cfcb4aaa9f8c4a567c0be4d88972)] -> css selector: input[name=serviceDescription]], [P, i, n, t, o,  , c, o, m,  , a, s,  , c, o, r, e, s,  , b, r, a, n, c, a, ,,  , a, z, u, l,  , e,  , v, e, r, m, e, l, h, a]])
-19:45:19.792 INFO - Done: [send keys: 7 [[ChromeDriver: chrome on MAC (e673cfcb4aaa9f8c4a567c0be4d88972)] -> css selector: input[name=serviceDescription]], [P, i, n, t, o,  , c, o, m,  , a, s,  , c, o, r, e, s,  , b, r, a, n, c, a, ,,  , a, z, u, l,  , e,  , v, e, r, m, e, l, h, a]]
-19:45:19.794 INFO - Executing: [find element: By.selector: form button])
-19:45:19.801 INFO - Done: [find element: By.selector: form button]
-19:45:19.803 INFO - Executing: [click: 8 [[ChromeDriver: chrome on MAC (e673cfcb4aaa9f8c4a567c0be4d88972)] -> css selector: form button]])
-19:45:19.992 INFO - Done: [click: 8 [[ChromeDriver: chrome on MAC (e673cfcb4aaa9f8c4a567c0be4d88972)] -> css selector: form button]]
-19:45:20.100 INFO - Executing: [find element: By.selector: body])
-19:45:20.116 INFO - Done: [find element: By.selector: body]
-19:45:20.120 INFO - Executing: [get text: 9 [[ChromeDriver: chrome on MAC (e673cfcb4aaa9f8c4a567c0be4d88972)] -> css selector: body]])
-19:45:20.152 INFO - Done: [get text: 9 [[ChromeDriver: chrome on MAC (e673cfcb4aaa9f8c4a567c0be4d88972)] -> css selector: body]]
-19:45:20.155 INFO - Executing: [delete session: 33bada06-a90c-469d-8c97-c5d25ef12a6f])
-19:45:20.719 INFO - Done: [delete session: 33bada06-a90c-469d-8c97-c5d25ef12a6f]
-19:45:20.729 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
-19:45:20.739 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
-Starting ChromeDriver 2.28.455517 (2c6d2707d8ea850c862f04ac066724273981e88f) on port 40545
-Only local connections are allowed.
-19:45:21.931 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
-19:45:21.935 INFO - Executing: [get: http://localhost:3000/loginIntegrador])
-19:45:24.618 INFO - Done: [get: http://localhost:3000/loginIntegrador]
-19:45:24.627 INFO - Executing: [get: http://localhost:3000/integrador/servicos-especificos])
-19:45:24.812 INFO - Done: [get: http://localhost:3000/integrador/servicos-especificos]
-19:45:24.817 INFO - Executing: [find element: By.selector: input[name=serviceName]])
-19:45:24.840 INFO - Done: [find element: By.selector: input[name=serviceName]]
-19:45:24.843 INFO - Executing: [send keys: 0 [[ChromeDriver: chrome on MAC (107573b4e040304e49e9b365ccff44c0)] -> css selector: input[name=serviceName]], [S, e, r, v, i, ç, o,  , d, e,  , p, i, n, t, u, r, a]])
-19:45:24.970 INFO - Done: [send keys: 0 [[ChromeDriver: chrome on MAC (107573b4e040304e49e9b365ccff44c0)] -> css selector: input[name=serviceName]], [S, e, r, v, i, ç, o,  , d, e,  , p, i, n, t, u, r, a]]
-19:45:24.973 INFO - Executing: [find element: By.selector: form button])
-19:45:24.997 INFO - Done: [find element: By.selector: form button]
-19:45:25.000 INFO - Executing: [click: 1 [[ChromeDriver: chrome on MAC (107573b4e040304e49e9b365ccff44c0)] -> css selector: form button]])
-19:45:25.158 INFO - Done: [click: 1 [[ChromeDriver: chrome on MAC (107573b4e040304e49e9b365ccff44c0)] -> css selector: form button]]
-19:45:25.269 INFO - Executing: [find element: By.selector: body])
-19:45:25.293 INFO - Done: [find element: By.selector: body]
-19:45:25.297 INFO - Executing: [get text: 2 [[ChromeDriver: chrome on MAC (107573b4e040304e49e9b365ccff44c0)] -> css selector: body]])
-19:45:25.331 INFO - Done: [get text: 2 [[ChromeDriver: chrome on MAC (107573b4e040304e49e9b365ccff44c0)] -> css selector: body]]
-19:45:25.334 INFO - Executing: [find element: By.selector: a.negociar])
-19:45:25.356 INFO - Done: [find element: By.selector: a.negociar]
-19:45:25.358 INFO - Executing: [click: 3 [[ChromeDriver: chrome on MAC (107573b4e040304e49e9b365ccff44c0)] -> css selector: a.negociar]])
-19:45:25.546 INFO - Done: [click: 3 [[ChromeDriver: chrome on MAC (107573b4e040304e49e9b365ccff44c0)] -> css selector: a.negociar]]
-19:45:25.756 INFO - Executing: [find element: By.selector: a.contratosTab])
-19:45:25.788 INFO - Done: [find element: By.selector: a.contratosTab]
-19:45:25.791 INFO - Executing: [click: 4 [[ChromeDriver: chrome on MAC (107573b4e040304e49e9b365ccff44c0)] -> css selector: a.contratosTab]])
-19:45:25.855 INFO - Done: [click: 4 [[ChromeDriver: chrome on MAC (107573b4e040304e49e9b365ccff44c0)] -> css selector: a.contratosTab]]
-19:45:26.066 INFO - Executing: [find element: By.selector: body])
-19:45:26.077 INFO - Done: [find element: By.selector: body]
-19:45:26.080 INFO - Executing: [get text: 5 [[ChromeDriver: chrome on MAC (107573b4e040304e49e9b365ccff44c0)] -> css selector: body]])
-19:45:26.114 INFO - Done: [get text: 5 [[ChromeDriver: chrome on MAC (107573b4e040304e49e9b365ccff44c0)] -> css selector: body]]
-19:45:26.117 INFO - Executing: [delete session: c3671016-aa60-41c1-ad79-9b689bbd7bb5])
-19:45:26.689 INFO - Done: [delete session: c3671016-aa60-41c1-ad79-9b689bbd7bb5]
-19:45:26.698 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
-19:45:26.700 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
-Starting ChromeDriver 2.28.455517 (2c6d2707d8ea850c862f04ac066724273981e88f) on port 34525
-Only local connections are allowed.
-19:45:27.976 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
-19:45:27.979 INFO - Executing: [get: http://localhost:3000/loginFornecedor])
-19:45:29.891 INFO - Done: [get: http://localhost:3000/loginFornecedor]
-19:45:29.897 INFO - Executing: [find element: By.selector: a.contratosTab])
-19:45:29.923 INFO - Done: [find element: By.selector: a.contratosTab]
-19:45:29.925 INFO - Executing: [click: 0 [[ChromeDriver: chrome on MAC (1dc9339251df894d8965e19782300779)] -> css selector: a.contratosTab]])
-19:45:29.989 INFO - Done: [click: 0 [[ChromeDriver: chrome on MAC (1dc9339251df894d8965e19782300779)] -> css selector: a.contratosTab]]
-19:45:30.199 INFO - Executing: [find element: By.selector: a.cronograma])
-19:45:30.229 INFO - Done: [find element: By.selector: a.cronograma]
-19:45:30.232 INFO - Executing: [click: 1 [[ChromeDriver: chrome on MAC (1dc9339251df894d8965e19782300779)] -> css selector: a.cronograma]])
-19:45:30.462 INFO - Done: [click: 1 [[ChromeDriver: chrome on MAC (1dc9339251df894d8965e19782300779)] -> css selector: a.cronograma]]
-19:45:30.672 INFO - Executing: [find element: By.selector: input[name=estado]])
-19:45:30.700 INFO - Done: [find element: By.selector: input[name=estado]]
-19:45:30.703 INFO - Executing: [send keys: 2 [[ChromeDriver: chrome on MAC (1dc9339251df894d8965e19782300779)] -> css selector: input[name=estado]], [I, n, i, c, i, a, r,  , p, i, n, t, u, r, a]])
-19:45:30.818 INFO - Done: [send keys: 2 [[ChromeDriver: chrome on MAC (1dc9339251df894d8965e19782300779)] -> css selector: input[name=estado]], [I, n, i, c, i, a, r,  , p, i, n, t, u, r, a]]
-19:45:30.827 INFO - Executing: [find element: By.selector: button.adicionar-estado])
-19:45:30.848 INFO - Done: [find element: By.selector: button.adicionar-estado]
-19:45:30.861 INFO - Executing: [click: 3 [[ChromeDriver: chrome on MAC (1dc9339251df894d8965e19782300779)] -> css selector: button.adicionar-estado]])
-19:45:31.087 INFO - Done: [click: 3 [[ChromeDriver: chrome on MAC (1dc9339251df894d8965e19782300779)] -> css selector: button.adicionar-estado]]
-19:45:31.297 INFO - Executing: [find element: By.selector: input[name=name]])
-19:45:31.321 INFO - Done: [find element: By.selector: input[name=name]]
-19:45:31.324 INFO - Executing: [send keys: 4 [[ChromeDriver: chrome on MAC (1dc9339251df894d8965e19782300779)] -> css selector: input[name=name]], [T, i, n, t, a]])
-19:45:31.390 INFO - Done: [send keys: 4 [[ChromeDriver: chrome on MAC (1dc9339251df894d8965e19782300779)] -> css selector: input[name=name]], [T, i, n, t, a]]
-19:45:31.392 INFO - Executing: [find element: By.selector: input[name=value]])
-19:45:31.413 INFO - Done: [find element: By.selector: input[name=value]]
-19:45:31.416 INFO - Executing: [send keys: 5 [[ChromeDriver: chrome on MAC (1dc9339251df894d8965e19782300779)] -> css selector: input[name=value]], [R, $,  , 3, 0, 0, ,, 0, 0]])
-19:45:31.494 INFO - Done: [send keys: 5 [[ChromeDriver: chrome on MAC (1dc9339251df894d8965e19782300779)] -> css selector: input[name=value]], [R, $,  , 3, 0, 0, ,, 0, 0]]
-19:45:31.496 INFO - Executing: [find element: By.selector: button.adicionar-gasto])
-19:45:31.518 INFO - Done: [find element: By.selector: button.adicionar-gasto]
-19:45:31.521 INFO - Executing: [click: 6 [[ChromeDriver: chrome on MAC (1dc9339251df894d8965e19782300779)] -> css selector: button.adicionar-gasto]])
-19:45:31.744 INFO - Done: [click: 6 [[ChromeDriver: chrome on MAC (1dc9339251df894d8965e19782300779)] -> css selector: button.adicionar-gasto]]
-19:45:31.951 INFO - Executing: [find element: By.selector: body])
-19:45:31.975 INFO - Done: [find element: By.selector: body]
-19:45:31.978 INFO - Executing: [get text: 7 [[ChromeDriver: chrome on MAC (1dc9339251df894d8965e19782300779)] -> css selector: body]])
-19:45:32.018 INFO - Done: [get text: 7 [[ChromeDriver: chrome on MAC (1dc9339251df894d8965e19782300779)] -> css selector: body]]
-19:45:32.021 INFO - Executing: [find element: By.selector: body])
-19:45:32.029 INFO - Done: [find element: By.selector: body]
-19:45:32.031 INFO - Executing: [get text: 7 [[ChromeDriver: chrome on MAC (1dc9339251df894d8965e19782300779)] -> css selector: body]])
-19:45:32.052 INFO - Done: [get text: 7 [[ChromeDriver: chrome on MAC (1dc9339251df894d8965e19782300779)] -> css selector: body]]
-19:45:32.055 INFO - Executing: [delete session: ee953c4a-cffa-44b2-8bdc-39afc70ac9c7])
-19:45:32.629 INFO - Done: [delete session: ee953c4a-cffa-44b2-8bdc-39afc70ac9c7]
-19:45:32.636 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
-19:45:32.637 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
-Starting ChromeDriver 2.28.455517 (2c6d2707d8ea850c862f04ac066724273981e88f) on port 12791
-Only local connections are allowed.
-19:45:33.897 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
-19:45:33.900 INFO - Executing: [get: http://localhost:3000/loginIntegrador])
-19:45:36.961 INFO - Done: [get: http://localhost:3000/loginIntegrador]
-19:45:36.965 INFO - Executing: [get: http://localhost:3000/integrador/servicos-especificos])
-19:45:37.120 INFO - Done: [get: http://localhost:3000/integrador/servicos-especificos]
-19:45:37.122 INFO - Executing: [find element: By.selector: a.contratosTab])
-19:45:37.149 INFO - Done: [find element: By.selector: a.contratosTab]
-19:45:37.152 INFO - Executing: [click: 0 [[ChromeDriver: chrome on MAC (402f5d643b4fe2d946d705d24c39b8a7)] -> css selector: a.contratosTab]])
-19:45:37.214 INFO - Done: [click: 0 [[ChromeDriver: chrome on MAC (402f5d643b4fe2d946d705d24c39b8a7)] -> css selector: a.contratosTab]]
-19:45:37.422 INFO - Executing: [find element: By.selector: a.cronograma])
-19:45:37.452 INFO - Done: [find element: By.selector: a.cronograma]
-19:45:37.454 INFO - Executing: [click: 1 [[ChromeDriver: chrome on MAC (402f5d643b4fe2d946d705d24c39b8a7)] -> css selector: a.cronograma]])
-19:45:37.630 INFO - Done: [click: 1 [[ChromeDriver: chrome on MAC (402f5d643b4fe2d946d705d24c39b8a7)] -> css selector: a.cronograma]]
-19:45:37.842 INFO - Executing: [find element: By.selector: body])
-19:45:37.867 INFO - Done: [find element: By.selector: body]
-19:45:37.869 INFO - Executing: [get text: 2 [[ChromeDriver: chrome on MAC (402f5d643b4fe2d946d705d24c39b8a7)] -> css selector: body]])
-19:45:37.904 INFO - Done: [get text: 2 [[ChromeDriver: chrome on MAC (402f5d643b4fe2d946d705d24c39b8a7)] -> css selector: body]]
-19:45:37.908 INFO - Executing: [find element: By.selector: body])
-19:45:37.915 INFO - Done: [find element: By.selector: body]
-19:45:37.918 INFO - Executing: [get text: 2 [[ChromeDriver: chrome on MAC (402f5d643b4fe2d946d705d24c39b8a7)] -> css selector: body]])
-19:45:37.934 INFO - Done: [get text: 2 [[ChromeDriver: chrome on MAC (402f5d643b4fe2d946d705d24c39b8a7)] -> css selector: body]]
-19:45:37.936 INFO - Executing: [delete session: 9222c997-bc4b-4c05-88e4-1e6ff60cb8b7])
-19:45:38.507 INFO - Done: [delete session: 9222c997-bc4b-4c05-88e4-1e6ff60cb8b7]
-19:45:38.518 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
-19:45:38.520 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
-Starting ChromeDriver 2.28.455517 (2c6d2707d8ea850c862f04ac066724273981e88f) on port 2944
-Only local connections are allowed.
-19:45:39.796 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
-19:45:54.801 INFO - Executing: [get: http://localhost:3000/tarifacao])
-19:45:58.351 INFO - Done: [get: http://localhost:3000/tarifacao]
-19:45:58.354 INFO - Executing: [find elements: By.selector: body])
-19:45:58.417 INFO - Done: [find elements: By.selector: body]
-19:45:58.420 INFO - Executing: [get text: 0 [[ChromeDriver: chrome on MAC (b439093c9c5cbee29a8670e160680a56)] -> css selector: body]])
-19:45:58.462 INFO - Done: [get text: 0 [[ChromeDriver: chrome on MAC (b439093c9c5cbee29a8670e160680a56)] -> css selector: body]]
-19:45:58.465 INFO - Executing: [find elements: By.selector: body])
-19:45:58.474 INFO - Done: [find elements: By.selector: body]
-19:45:58.477 INFO - Executing: [get text: 0 [[ChromeDriver: chrome on MAC (b439093c9c5cbee29a8670e160680a56)] -> css selector: body]])
-19:45:58.494 INFO - Done: [get text: 0 [[ChromeDriver: chrome on MAC (b439093c9c5cbee29a8670e160680a56)] -> css selector: body]]
-19:45:58.497 INFO - Executing: [find elements: By.selector: body])
-19:45:58.507 INFO - Done: [find elements: By.selector: body]
-19:45:58.511 INFO - Executing: [get text: 0 [[ChromeDriver: chrome on MAC (b439093c9c5cbee29a8670e160680a56)] -> css selector: body]])
-19:45:58.533 INFO - Done: [get text: 0 [[ChromeDriver: chrome on MAC (b439093c9c5cbee29a8670e160680a56)] -> css selector: body]]
-19:45:58.536 INFO - Executing: [delete session: 416542bb-98f1-45f2-9518-4a69e7f781bd])
-19:45:59.102 INFO - Done: [delete session: 416542bb-98f1-45f2-9518-4a69e7f781bd]
+09:06:16.148 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Home Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+09:06:31.159 INFO - Executing: [get: http://localhost:3000/tarifacao])
+09:06:32.171 INFO - Done: [get: http://localhost:3000/tarifacao]
+09:06:32.176 INFO - Executing: [find elements: By.selector: body])
+09:06:32.199 INFO - Done: [find elements: By.selector: body]
+09:06:32.202 INFO - Executing: [get text: 0 [[ChromeDriver: chrome on MAC (a57ee60d12491573a4c638d6685dfff7)] -> css selector: body]])
+09:06:32.245 INFO - Done: [get text: 0 [[ChromeDriver: chrome on MAC (a57ee60d12491573a4c638d6685dfff7)] -> css selector: body]]
+09:06:32.251 INFO - Executing: [delete session: c0780fa5-beb4-4166-9778-146cefcf156c])
+09:06:32.819 INFO - Done: [delete session: c0780fa5-beb4-4166-9778-146cefcf156c]
